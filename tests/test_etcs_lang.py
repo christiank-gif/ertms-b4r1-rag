@@ -280,3 +280,31 @@ class TestExporter(unittest.TestCase):
                                       "d_dp": 100, "q_scale": 1}))
         self.assertTrue(r["hex"].startswith("03"))
         self.assertEqual(api.validate(3, "sol", [15]), [])
+
+
+class TestStepWorkflow(unittest.TestCase):
+    def test_telegram_group_per_balise(self):
+        import json as _json
+        from etcs_lang.webui import Api
+        from etcs_lang.telegram import decode_telegram
+        api = Api()
+        r = api.generate_telegram(_json.dumps({
+            "version": "3.0", "nid_c": 1, "nid_bg": 100, "n_total": 3,
+            "m_mcount": 7, "packets": [0, 2, 3], "nid_vbcmk": 5}))
+        self.assertEqual(len(r["telegrams"]), 3)
+        for i, t in enumerate(r["telegrams"]):
+            dec = decode_telegram(bytes.fromhex(t["hex"]))
+            self.assertEqual(dec.fields["N_PIG"], i)
+            self.assertEqual(dec.fields["N_TOTAL"], 3)
+            self.assertEqual(dec.fields["M_MCOUNT"], 7)
+            nums = [p.number for p in dec.packets]
+            self.assertEqual(nums, [0, 2, 3])  # packet 0 first (§8.4.2.3)
+            self.assertEqual(dec.packets[0].fields["NID_VBCMK"], 5)
+
+    def test_balise_packet_list(self):
+        from etcs_lang.webui import Api
+        api = Api()
+        pkts = api.balise_packets()
+        nums = [p["num"] for p in pkts]
+        for n in (0, 2, 3, 15, 42, 65, 136):
+            self.assertIn(n, nums)

@@ -93,11 +93,15 @@ class PacketWriter:
 # ---- track-to-train packet builders (ch.7 §7.4.2) ------------------------------
 
 def build_packet_0_vbcmk(nid_vbcmk: int, q_dir=0) -> bytes:
-    """Packet 0: Virtual Balise Cover marker — NID_PACKET + NID_VBCMK(6)."""
+    """Packet 0 (track-to-train): Virtual Balise Cover marker.
+
+    Per ch.8 §8.4.2.3 the packet 0 is appended directly to the balise header:
+    NID_PACKET(8)=0 + NID_VBCMK(6), no Q_DIR/L_PACKET.
+    """
     w = BitWriter()
     w.write_uint(0, 8)
     w.write_uint(nid_vbcmk, 6)
-    return w.to_bytes()
+    return w.to_bits()  # 14 raw bits, to be embedded bit-exactly after the header
 
 
 def build_packet_2_system_version_order(m_version, q_dir=0) -> bytes:
@@ -353,10 +357,13 @@ def build_packet(number, direction, **kwargs) -> bytes:
 
 # ---- packet decoding -----------------------------------------------------------
 
-def decode_packet(reader: BitReader, direction="track_to_train") -> Packet:
+def decode_packet(reader: BitReader, direction="track_to_train", in_telegram=False) -> Packet:
     nid_packet = reader.read_uint(8)
     if nid_packet == 255:
         return Packet(255, direction, {})
+    if direction == "track_to_train" and nid_packet == 0 and in_telegram:
+        # ch.8 §8.4.2.3: packet 0 appended to header = NID_PACKET + NID_VBCMK only
+        return Packet(0, direction, {"NID_VBCMK": reader.read_uint(6)})
     if direction == "track_to_train":
         reader.read_uint(2)  # Q_DIR
     header_bits = 23 if direction == "track_to_train" else 21

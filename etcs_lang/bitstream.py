@@ -28,6 +28,9 @@ class BitWriter:
         return list(self._bits)
 
     def to_bytes(self, pad: bool = True) -> bytes:
+        """Pack bits into bytes. With pad=False, a trailing partial byte is
+        kept as a bit string so callers can embed it bit-exactly (e.g. the
+        14-bit packet 0 of a balise telegram, ch.8 §8.4.2.3)."""
         bits = self._bits[:]
         if pad:
             while len(bits) % 8:
@@ -35,8 +38,10 @@ class BitWriter:
         out = bytearray()
         for i in range(0, len(bits), 8):
             byte = 0
-            for b in bits[i : i + 8]:
+            chunk = bits[i : i + 8]
+            for b in chunk:
                 byte = (byte << 1) | b
+            byte <<= (8 - len(chunk))  # left-align partial trailing byte
             out.append(byte)
         return bytes(out)
 
@@ -83,3 +88,7 @@ class BitReader:
 
     def to_bits(self):
         return self._bits[self._pos :]
+
+    def read_bits(self, n: int):
+        """Read n raw bits as a list (bit-exact, may span byte boundaries)."""
+        return [self.read_uint(1) for _ in range(n)]

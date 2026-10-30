@@ -74,20 +74,20 @@ python -m etcs_lang.cli decode <hex> --kind loop               # décoder un mes
 | `tools/extract_spec.py`, `tools/extract_packets.py` | extracteurs des spécifications |
 | `tests/test_etcs_lang.py` | tests unitaires (round-trip encode/décode) |
 
-## Interface graphique
+## Interface graphique (fonctionnement par étapes)
 
 ```bash
 pip install pywebview        # dépendance GUI uniquement
 python -m etcs_lang.webui    # ouvre une fenêtre navigateur
 ```
 
-L'interface permet de :
-- choisir la **direction** (sol → bord ou bord → sol), la **version système** (ch.6), NID_C/NID_BG, T_TRAIN ;
-- sélectionner un **message** dans la liste ch.8 (§8.5.2/§8.5.3) ;
-- cocher uniquement les **paquets autorisés** pour ce message (obligatoires pré-cochés, ch.8 §8.4.4.4) ;
-- **valider la conformité** (bouton « Valider conformité ch.8 » : paquet obligatoire manquant, paquet non autorisé, doublon interdit §8.4.1) ;
-- **générer** le message binaire (hex) et l'afficher décodé ;
-- **enregistrer dans un format relisible** : JSON (structure complète décodée + hex) ou TXT (rendu lisible ligne par ligne).
+**Étape 1 — type de transmission** : Télégramme Eurobalise **ou** Message radio Euroradio (Euroloop non proposé).
+
+**Étape 2a — Télégramme balise** : configuration complète de l'en-tête 50 bits (ch.8 §8.4.2.1) — Q_UPDOWN, M_VERSION (version système ch.6), **N_TOTAL = nombre de balises du groupe**, N_PIG généré automatiquement, M_DUP, M_MCOUNT, NID_C, NID_BG, Q_LINK — puis choix des paquets (0 VBC marker placé en premier §8.4.2.3, 2, 3, 15, 21, 27, 41, 42, 44, 65, 136…). Le paquet 255 est ajouté automatiquement. **Un télégramme est généré par balise** (N_PIG = 0..N_TOTAL-1).
+
+**Étape 2b — Message radio** : choix de la **direction** (Sol → Bord §8.7 / Bord → Sol §8.6), de la **version système**, NID_C/NID_BG, T_TRAIN, puis d'un **message** dans la liste ch.8 correspondante, et des **paquets autorisés** pour ce message (obligatoires pré-cochés, ch.8 §8.4.4.4). Bouton « Valider conformité ch.8 » (paquet obligatoire manquant, non autorisé, doublon §8.4.1).
+
+**Étape 3 — Résultat** : affichage décodé + téléchargement en **JSON** (structure complète + hex) ou **TXT** (lisible ligne par ligne).
 
 ## Tests
 
