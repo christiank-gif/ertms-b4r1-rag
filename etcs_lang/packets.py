@@ -93,11 +93,15 @@ class PacketWriter:
 # ---- track-to-train packet builders (ch.7 §7.4.2) ------------------------------
 
 def build_packet_0_vbcmk(nid_vbcmk: int, q_dir=0) -> bytes:
-    """Packet 0: Virtual Balise Cover marker — NID_PACKET + NID_VBCMK(6)."""
+    """Packet 0 (track-to-train): Virtual Balise Cover marker.
+
+    Per ch.8 §8.4.2.3 the packet 0 is appended directly to the balise header:
+    NID_PACKET(8)=0 + NID_VBCMK(6), no Q_DIR/L_PACKET.
+    """
     w = BitWriter()
     w.write_uint(0, 8)
     w.write_uint(nid_vbcmk, 6)
-    return w.to_bytes()
+    return w.to_bits()  # 14 raw bits, to be embedded bit-exactly after the header
 
 
 def build_packet_2_system_version_order(m_version, q_dir=0) -> bytes:
@@ -152,8 +156,12 @@ def build_packet_15_l2_ma(q_scale, v_ema_kmh, t_ema_s, l_endsection_m,
     for s in sections:
         p.dist("L_SECTION", s, q_scale)
         p.raw("Q_SECTIONTIMER", 0)
+        p.timer("T_SECTIONTIMER", 0)
+        p.dist("D_SECTIONTIMERSTOPLOC", 0.0, q_scale)
     p.dist("L_ENDSECTION", l_endsection_m, q_scale)
     p.raw("Q_SECTIONTIMER", 0)
+    p.timer("T_SECTIONTIMER", 0)
+    p.dist("D_SECTIONTIMERSTOPLOC", 0.0, q_scale)
     p.raw("Q_ENDTIMER", q_endtimer)
     if q_endtimer:
         p.timer("T_ENDTIMER", t_endtimer_s)
@@ -323,6 +331,70 @@ def build_packet_11_train_data(nc_cdtrain, nc_train, l_train_m, v_maxtrain_kmh,
     return p.finish()
 
 
+def packet_fields(number, direction="track_to_train"):
+    """Field definitions of a packet from the SUBSET-026-7 extraction."""
+    for key in (f"{number}#{direction}", str(number)):
+        entry = PACKET_DEFS.get(key)
+        if entry:
+            return entry["fields"]
+    return []
+
+
+def build_packet_from_fields(number, direction, values) -> bytes:
+    """Build a packet generically from its SUBSET-026-7 field table.
+
+    values: dict name -> int. A field flagged 'repeat' starts a repetition
+    group whose size is given by the last N_ITER seen (N_ITER+1 entries);
+    repeated entries are read from values as 'NAME_0', 'NAME_1', ...
+    (falling back to the plain 'NAME'). M_VERSION accepts 'X.Y' strings.
+    """
+    t2t = direction == "track_to_train"
+    p = PacketWriter(number, track_to_train=t2t, q_dir=int(values.get("Q_DIR", 0)) if t2t else 0)
+    n_iter = 0
+    i = 0
+    fields = packet_fields(number, direction)
+    while i < len(fields):
+        f = fields[i]
+        name = f["name"]
+        if name in ("NID_PACKET", "L_PACKET"):
+            i += 1
+            continue
+        if name == "Q_DIR" and t2t:
+            i += 1
+            continue  # written by PacketWriter
+        if name == "N_ITER":
+            n_iter = int(values.get("N_ITER", 0))
+            p.uint(n_iter, f["length_bits"])
+            i += 1
+            continue
+        if f["repeat"]:
+            # collect the whole consecutive group of repeated fields
+            group = []
+            while i < len(fields) and fields[i]["repeat"]:
+                group.append(fields[i])
+                i += 1
+            for k in range(n_iter + 1):
+                for gf in group:
+                    v = values.get(f"{gf['name']}_{k}", values.get(gf["name"], 0))
+                    p.uint(int(v), gf["length_bits"])
+            continue
+        # conditional fields of packet 15: present only when the Q_ flag = 1
+        if number == 15:
+            cond = {"T_ENDTIMER": "Q_ENDTIMER", "D_ENDTIMERSTARTLOC": "Q_ENDTIMER",
+                    "D_DP": "Q_DANGERPOINT", "V_RELEASEDP": "Q_DANGERPOINT",
+                    "D_STARTOL": "Q_OVERLAP", "T_OL": "Q_OVERLAP",
+                    "D_OL": "Q_OVERLAP", "V_RELEASEOL": "Q_OVERLAP"}
+            if name in cond and int(values.get(cond[name], 0)) == 0:
+                i += 1
+                continue
+        v = values.get(name, 0)
+        if name == "M_VERSION" and isinstance(v, str) and "." in v:
+            v = version_code(v)
+        p.uint(int(v), f["length_bits"])
+        i += 1
+    return p.finish()
+
+
 BUILDERS = {
     (0, "track_to_train"): build_packet_0_vbcmk,
     (2, "track_to_train"): build_packet_2_system_version_order,
@@ -353,10 +425,13 @@ def build_packet(number, direction, **kwargs) -> bytes:
 
 # ---- packet decoding -----------------------------------------------------------
 
-def decode_packet(reader: BitReader, direction="track_to_train") -> Packet:
+def decode_packet(reader: BitReader, direction="track_to_train", in_telegram=False) -> Packet:
     nid_packet = reader.read_uint(8)
     if nid_packet == 255:
         return Packet(255, direction, {})
+    if direction == "track_to_train" and nid_packet == 0 and in_telegram:
+        # ch.8 §8.4.2.3: packet 0 appended to header = NID_PACKET + NID_VBCMK only
+        return Packet(0, direction, {"NID_VBCMK": reader.read_uint(6)})
     if direction == "track_to_train":
         reader.read_uint(2)  # Q_DIR
     header_bits = 23 if direction == "track_to_train" else 21
@@ -387,17 +462,15 @@ def decode_packet(reader: BitReader, direction="track_to_train") -> Packet:
             sections = []
             for _ in range(n_iter + 1):
                 sec = {"L_SECTION": reader.read_uint(15),
-                       "Q_SECTIONTIMER": reader.read_uint(1)}
-                if sec["Q_SECTIONTIMER"]:
-                    sec["T_SECTIONTIMER"] = reader.read_uint(10)
-                    sec["D_SECTIONTIMERSTOPLOC"] = reader.read_uint(15)
+                       "Q_SECTIONTIMER": reader.read_uint(1),
+                       "T_SECTIONTIMER": reader.read_uint(10),
+                       "D_SECTIONTIMERSTOPLOC": reader.read_uint(15)}
                 sections.append(sec)
             fields["sections"] = sections
             fields["L_ENDSECTION"] = reader.read_uint(15)
             fields["Q_SECTIONTIMER"] = reader.read_uint(1)
-            if fields["Q_SECTIONTIMER"]:
-                fields["T_SECTIONTIMER"] = reader.read_uint(10)
-                fields["D_SECTIONTIMERSTOPLOC"] = reader.read_uint(15)
+            fields["T_SECTIONTIMER"] = reader.read_uint(10)
+            fields["D_SECTIONTIMERSTOPLOC"] = reader.read_uint(15)
             fields["Q_ENDTIMER"] = reader.read_uint(1)
             if fields["Q_ENDTIMER"]:
                 fields["T_ENDTIMER"] = reader.read_uint(10)

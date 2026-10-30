@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>ERTMS/ETCS B4R1 - Générateur de messages</title>
+<style>
+ body{font-family:Segoe UI,Arial,sans-serif;margin:16px;background:#f5f6f8}
+ h1{font-size:18px} h2{font-size:15px;margin:8px 0}
+ .steps{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+ .step{padding:6px 12px;border-radius:4px;background:#dde;color:#224;font-weight:bold}
+ .step.active{background:#246;color:#fff}
+ .row{display:flex;gap:16px;flex-wrap:wrap}
+ .col{background:#fff;border:1px solid #ddd;border-radius:6px;padding:10px}
+ select,input{width:100%;margin:2px 0;box-sizing:border-box}
+ .pkt{display:block} button{margin:4px 4px 4px 0;padding:6px 10px;cursor:pointer}
+ pre{background:#111;color:#0f0;padding:8px;max-height:280px;overflow:auto;font-size:12px}
+ #err{color:#a00;font-weight:bold;white-space:pre-wrap}
+ label{font-size:12px;color:#444;display:block;margin-top:4px}
+ .kindbtn{font-size:15px;padding:14px 18px}
+ .hidden{display:none}
+ table{border-collapse:collapse;font-size:12px}
+ td,th{border:1px solid #ccc;padding:2px 6px}
+ .inserted{background:#e8f5e9;border:1px solid #4caf50;border-radius:4px;padding:4px 8px;margin:2px 0;font-size:12px}
+</style></head><body>
+<h1>ERTMS/ETCS B4R1 — Création de messages (SUBSET-026 ch.6/7/8)</h1>
+<div class="steps">
+ <div class="step active" id="s1">1. Type</div>
+ <div class="step" id="s2">2. Config</div>
+ <div class="step" id="s3">3. Résultat</div>
+</div>
+<div id="err"></div>
+
+<!-- ETAPE 1 -->
+<div id="step1">
+  <h2>Étape 1 — Que voulez-vous créer ?</h2>
+  <button class="kindbtn" onclick="chooseKind('telegram')">Télégramme Eurobalise</button>
+  <button class="kindbtn" onclick="chooseKind('radio')">Message radio (Euroradio)</button>
+</div>
+
+<!-- ETAPE 2 TELEGRAMME : sous-étapes header -> paquets -->
+<div id="step2tg" class="hidden">
+  <h2>Étape 2a — En-tête du télégramme balise (50 bits, ch.8 §8.4.2.1)</h2>
+  <div class="row">
+   <div class="col" style="width:260px">
+    <label>Q_UPDOWN (1=up-link sol→bord)</label><select id="tg_q_updown"><option value="1">1 - up-link</option><option value="0">0 - down-link</option></select>
+    <label>M_VERSION (version système, ch.6)</label>
+    <select id="tg_version"><option>1.0</option><option>1.1</option><option>2.0</option><option>2.1</option><option>2.2</option><option>2.3</option><option selected>3.0</option></select>
+    <label><b>N_TOTAL — nombre de balises du groupe</b> (3 bits, 1..8)</label><input id="tg_n_total" type="number" value="1" min="1" max="8">
+    <label>M_MCOUNT (8 bits)</label><input id="tg_m_mcount" type="number" value="0" min="0" max="255">
+    <label>M_DUP</label><select id="tg_m_dup"><option value="0">0 - no duplicate</option><option value="1">1 - dup of previous</option><option value="2">2 - dup of next</option></select>
+    <label>NID_C (10 bits)</label><input id="tg_nid_c" type="number" value="1" min="0" max="1023">
+    <label>NID_BG (14 bits)</label><input id="tg_nid_bg" type="number" value="100" min="0" max="16382">
+    <label>Q_LINK</label><select id="tg_q_link"><option value="0">0 - unlinked</option><option value="1">1 - linked</option></select>
+   </div>
+   <div class="col" style="width:420px">
+    <h2>Étape 2b — Paquets à insérer</h2>
+    <label>Choisir un paquet (ch.7 §7.4.2)</label>
+    <select id="tg_pkt_sel" onchange="showPacketForm()"></select>
+    <div id="pkt_form"></div>
+    <button onclick="insertPacket()">Insérer ce paquet</button>
+    <h3>Paquets insérés :</h3>
+    <div id="inserted"></div>
+    <hr>
+    <button onclick="genTelegram()"><b>Générer le(s) télégramme(s)</b> (ajoute paquet 255 + longueurs)</button>
+    <button onclick="back()">← Retour étape 1</button>
+   </div>
+  </div>
+</div>
+
+<!-- ETAPE 2 RADIO -->
+<div id="step2radio" class="hidden">
+  <h2>Étape 2 — Message radio : direction, message, paquets autorisés</h2>
+  <div class="row">
+   <div class="col" style="width:280px">
+    <label>Direction</label>
+    <select id="dir" onchange="loadMessages()">
+     <option value="sol">Sol → Bord (track-to-train, ch.8 §8.7)</option>
+     <option value="bord">Bord → Sol (train-to-track, ch.8 §8.6)</option>
+    </select>
+    <label>Version système (ch.6)</label>
+    <select id="version"><option>1.0</option><option>1.1</option><option>2.0</option><option>2.1</option><option>2.2</option><option>2.3</option><option selected>3.0</option></select>
+    <label>NID_C</label><input id="nid_c" type="number" value="1">
+    <label>NID_BG (LRBG)</label><input id="nid_bg" type="number" value="100">
+    <label>T_TRAIN (ticks 10 ms)</label><input id="t_train" type="number" value="0">
+    <label>Message</label>
+    <select id="msg" size="10" style="height:220px" onchange="loadPackets()"></select>
+   </div>
+   <div class="col" style="width:340px">
+    <b>Paquets autorisés (ch.8 §8.4.4.4)</b>
+    <div id="mandatory"></div><div id="packets"></div>
+    <hr><b>Paramètres</b>
+    <label>M_ACK (0/1)</label><input id="m_ack" value="0">
+    <label>V_EMA km/h</label><input id="v_ema2" value="80">
+    <label>T_EMA s</label><input id="t_ema2" value="0">
+    <label>L_ENDSECTION m</label><input id="l_endsection2" value="5000">
+    <label>D_DP m</label><input id="d_dp2" value="100">
+    <label>V_RELEASEDP km/h</label><input id="v_releasedp2" value="0">
+    <label>D_SR m</label><input id="d_sr" value="2000">
+    <label>Q_SCALE (0/1/2)</label><input id="q_scale2" value="0">
+    <label>D_LRBG m</label><input id="d_lrbg" value="1200">
+    <label>V_TRAIN km/h</label><input id="v_train" value="60">
+    <label>M_MODE</label><input id="m_mode" value="0">
+    <label>M_LEVEL</label><input id="m_level" value="2">
+    <label>L_TRAIN m</label><input id="l_train" value="200">
+    <label>V_MAXTRAIN km/h</label><input id="v_maxtrain" value="160">
+    <label>N_AXLE</label><input id="n_axle" value="20">
+   </div>
+  </div>
+  <button onclick="validate()">Valider conformité ch.8</button>
+  <button onclick="generate()">Générer le message</button>
+  <button onclick="back()">← Retour étape 1</button>
+</div>
+
+<!-- ETAPE 3 -->
+<div id="step3" class="hidden">
+  <h2>Étape 3 — Résultat</h2>
+  <button onclick="save('json')">Télécharger JSON</button>
+  <button onclick="save('txt')">Télécharger TXT</button>
+  <button onclick="back()">← Retour étape 1</button>
+  <pre id="out"></pre>
+</div>
+
+<script>
+var insertedPackets = [];
+function g(id){ return document.getElementById(id).value; }
+function post(path, obj){
+  return fetch(path, {method:'POST', headers:{'Content-Type':'application/json'},
+                      body: JSON.stringify(obj)}).then(function(r){ return r.json(); });
+}
+function go(n){
+  ['step1','step2tg','step2radio','step3'].forEach(function(id){ document.getElementById(id).className='hidden'; });
+  document.getElementById('s1').className = n===1 ? 'step active' : 'step';
+  document.getElementById('s2').className = n===2 ? 'step active' : 'step';
+  document.getElementById('s3').className = n===3 ? 'step active' : 'step';
+  if(n===1){ document.getElementById('step1').className=''; }
+}
+function back(){ insertedPackets=[]; renderInserted(); document.getElementById('err').textContent=''; go(1); }
+function chooseKind(kind){
+  document.getElementById('err').textContent='';
+  if(kind==='telegram'){ go(2); document.getElementById('step2tg').className=''; loadBalisePackets(); }
+  else { go(2); document.getElementById('step2radio').className=''; loadMessages(); }
+}
+function loadBalisePackets(){
+  post('/api/balise_packets', {}).then(function(list){
+    var sel=document.getElementById('tg_pkt_sel'); sel.innerHTML='';
+    list.forEach(function(p){
+      var o=document.createElement('option'); o.value=p.num; o.text=p.num+' - '+p.name; sel.add(o);
+    });
+    showPacketForm();
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur: '+e; });
+}
+function showPacketForm(){
+  var num=parseInt(g('tg_pkt_sel'),10);
+  post('/api/packet_fields', {num: num, direction:'track_to_train'}).then(function(r){
+    var box=document.getElementById('pkt_form'); box.innerHTML='<b>'+r.name+'</b> (paquet '+r.num+')';
+    var niterSeen=false;
+    r.fields.forEach(function(f){
+      if(f.name==='N_ITER'){ niterSeen=true; }
+      var l=document.createElement('label');
+      l.textContent=f.name+(f.repeat?' (k)':'')+' - '+f.bits+' bits'+(f.comment?' - '+f.comment:'');
+      var inp=document.createElement('input');
+      inp.id='pf_'+f.name+(f.repeat?'_k':'');
+      inp.dataset.name=f.name; inp.dataset.repeat=f.repeat; inp.dataset.bits=f.bits;
+      if(f.name==='N_ITER') inp.value='0';
+      box.appendChild(l); box.appendChild(inp);
+    });
+    // hint for repeated groups
+    if(niterSeen){
+      var h=document.createElement('div');
+      h.innerHTML='<i>Les champs marqués (k) sont répétés N_ITER+1 fois : saisir N_ITER, puis NAME_0, NAME_1, ...</i>';
+      h.style.cssText='font-size:11px;color:#666';
+      box.appendChild(h);
+    }
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur: '+e; });
+}
+function insertPacket(){
+  var num=parseInt(g('tg_pkt_sel'),10);
+  var values={};
+  var inputs=document.querySelectorAll('#pkt_form input');
+  var niter=0;
+  inputs.forEach(function(inp){
+    if(inp.dataset.name==='N_ITER'){ niter=parseInt(inp.value||'0',10); values['N_ITER']=niter; }
+  });
+  inputs.forEach(function(inp){
+    var name=inp.dataset.name;
+    if(name==='N_ITER') return;
+    if(inp.dataset.repeat==='True' || inp.dataset.repeat==='true'){
+      for(var k=0;k<=niter;k++){
+        var el=document.getElementById('pf_'+name+'_'+k);
+        if(el) values[name+'_'+k]=parseInt(el.value||'0',10);
+      }
+      values[name]=parseInt(inp.value||'0',10);
+    } else {
+      values[name]=inp.value;
+    }
+  });
+  insertedPackets.push({num:num, values:values});
+  renderInserted();
+}
+function renderInserted(){
+  var box=document.getElementById('inserted'); box.innerHTML='';
+  insertedPackets.forEach(function(p,i){
+    var d=document.createElement('div'); d.className='inserted';
+    d.textContent='Paquet '+p.num+' : '+JSON.stringify(p.values);
+    var b=document.createElement('button'); b.textContent='Retirer';
+    b.onclick=function(){ insertedPackets.splice(i,1); renderInserted(); };
+    d.appendChild(b); box.appendChild(d);
+  });
+}
+function tgPayload(){
+  return {version:g('tg_version'),nid_c:g('tg_nid_c'),nid_bg:g('tg_nid_bg'),n_total:g('tg_n_total'),
+    m_mcount:g('tg_m_mcount'),m_dup:g('tg_m_dup'),q_link:g('tg_q_link'),q_updown:g('tg_q_updown'),
+    packets:insertedPackets};
+}
+function genTelegram(){
+  document.getElementById('err').textContent='';
+  post('/api/generate_telegram', tgPayload()).then(function(r){
+    if(r.error){ document.getElementById('err').textContent='Erreur: '+r.error; return; }
+    last={kind:'telegram',items:r.telegrams};
+    var txt='Groupe de '+r.n_total+' balise(s) — un télégramme par balise (N_PIG 0..'+(r.n_total-1)+') :\n\n';
+    r.telegrams.forEach(function(t){ txt+='--- Balise N_PIG='+t.n_pig+' ---\n'+t.text+'\n\n'; });
+    document.getElementById('out').textContent=txt;
+    go(3); document.getElementById('step3').className='';
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur: '+e; });
+}
+function loadMessages(){
+  post('/api/messages', {direction: g('dir')}).then(function(list){
+    var sel=document.getElementById('msg'); sel.innerHTML='';
+    list.forEach(function(m){
+      var o=document.createElement('option'); o.value=m.id; o.text=m.id+' - '+m.title; sel.add(o);
+    });
+    loadPackets();
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur: '+e; });
+}
+function loadPackets(){
+  var nid=g('msg'); if(!nid) return;
+  post('/api/packets', {nid: parseInt(nid,10), direction: g('dir')}).then(function(r){
+    var mandNums=r.mandatory.map(function(p){return p.num;});
+    document.getElementById('mandatory').innerHTML='<i>Obligatoires: '+
+      (r.mandatory.map(function(p){return p.num+' '+p.name;}).join(', ')||'aucun')+'</i>';
+    var box=document.getElementById('packets'); box.innerHTML='';
+    if(!r.optional.length && !r.mandatory.length){
+      box.innerHTML='<i>Ce message ne contient aucun paquet (ch.8 §8.6/§8.7).</i>'; return;
+    }
+    var seen={};
+    r.mandatory.concat(r.optional).forEach(function(p){
+      if(seen[p.num]) return; seen[p.num]=1;
+      var l=document.createElement('label'); l.className='pkt';
+      var c=document.createElement('input'); c.type='checkbox'; c.value=p.num;
+      if(mandNums.indexOf(p.num)>=0){ c.checked=true; c.disabled=true; }
+      l.appendChild(c); l.appendChild(document.createTextNode(' paquet '+p.num+' - '+p.name));
+      box.appendChild(l);
+    });
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur paquets: '+e; });
+}
+function checkedVals(sel){
+  var els=document.querySelectorAll(sel+' input:checked'), ps=[];
+  for(var i=0;i<els.length;i++) ps.push(els[i].value);
+  return ps;
+}
+function payload(){
+  return {direction:g('dir'),nid:g('msg'),version:g('version'),nid_c:g('nid_c'),nid_bg:g('nid_bg'),
+    t_train:g('t_train'),packets:checkedVals('#packets'),m_ack:g('m_ack'),v_ema:g('v_ema2'),
+    t_ema:g('t_ema2'),l_endsection:g('l_endsection2'),d_dp:g('d_dp2'),v_releasedp:g('v_releasedp2'),
+    d_sr:g('d_sr'),q_scale:g('q_scale2'),d_lrbg:g('d_lrbg'),v_train:g('v_train'),m_mode:g('m_mode'),
+    m_level:g('m_level'),l_train:g('l_train'),v_maxtrain:g('v_maxtrain'),n_axle:g('n_axle')};
+}
+function validate(){
+  var p=payload();
+  post('/api/validate', {nid: parseInt(p.nid,10), direction: p.direction, packets: p.packets})
+    .then(function(errs){
+      document.getElementById('err').textContent = errs.length ? ('NON CONFORME: '+errs.join(' | ')) : 'Conforme ch.8 OK';
+    }).catch(function(e){ document.getElementById('err').textContent='Erreur validation: '+e; });
+}
+var last=null;
+function generate(){
+  document.getElementById('err').textContent='';
+  post('/api/generate', payload()).then(function(r){
+    if(r.error){ document.getElementById('err').textContent='Erreur: '+r.error; return; }
+    last={kind:'message',items:[r]};
+    document.getElementById('out').textContent=r.text;
+    go(3); document.getElementById('step3').className='';
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur: '+e; });
+}
+function save(fmt){
+  if(!last) return;
+  var content;
+  if(last.kind==='telegram'){
+    if(fmt==='json'){
+      content=JSON.stringify({format:'Eurobalise group',telegrams:last.items.map(function(t){return JSON.parse(t.json);})},null,2);
+    } else {
+      content=last.items.map(function(t){return t.text;}).join('\n\n');
+    }
+  } else {
+    content = fmt==='json' ? last.items[0].json : last.items[0].text;
+  }
+  var blob=new Blob([content],{type:'text/plain'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='etcs_'+(last.kind==='telegram'?'telegrammes':'message')+'.'+fmt; a.click();
+}
+</script></body></html>

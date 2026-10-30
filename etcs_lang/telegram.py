@@ -25,11 +25,18 @@ def _read_packets(reader):
             reader.read_uint(8)
             break
         start = reader.pos
+        nid = reader.peek_uint(8)
         try:
-            packets.append(decode_packet(reader, "track_to_train"))
+            if nid == 0:
+                # ch.8 §8.4.2.3: packet 0 = NID_PACKET(8) + NID_VBCMK(6) only
+                reader.read_uint(8)
+                packets.append(Packet(0, "track_to_train", {"NID_VBCMK": reader.read_uint(6)}))
+                continue
+            pkt = decode_packet(reader, "track_to_train", in_telegram=True)
         except (EOFError, ValueError):
             reader._pos = start
             break
+        packets.append(pkt)
     return packets
 
 
@@ -51,11 +58,11 @@ class LoopMessage:
         return f"LoopMessage {self.fields} packets={[p.number for p in self.packets]}"
 
 
-def _append_packet_bits(w: BitWriter, pkt: bytes):
-    """Append packet bits without byte-alignment (ch.8 §8.4.2.2: packets are not split)."""
-    r = BitReader(pkt)
-    while r.remaining():
-        w.write_uint(r.read_uint(1), 1)
+def _append_packet_bits(w: BitWriter, pkt):
+    """Append packet bits without byte-alignment (ch.8 §8.4.2.2: packets are not split).
+    Accepts bytes or a raw bit list (e.g. the 14-bit packet 0)."""
+    bits = pkt if isinstance(pkt, list) else BitReader(pkt).to_bits()
+    w.write_bits(bits)
 
 
 def build_telegram(m_version, n_pig, n_total, m_dup, m_mcount, nid_c, nid_bg,
