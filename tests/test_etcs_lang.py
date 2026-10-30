@@ -264,33 +264,27 @@ class TestExporter(unittest.TestCase):
         self.assertIn("Packet 15", txt)
 
     def test_webui_api(self):
-        import json as _json
-        try:
-            from etcs_lang.webui import Api
-        except SystemExit:
-            self.skipTest("pywebview not installed")
-        api = Api()
-        self.assertEqual(len(api.messages("sol")), 24)
-        pk = api.packets(3, "sol")
+        from etcs_lang.webui import api_route
+        msgs = api_route("/api/messages", {"direction": "sol"})
+        self.assertEqual(len(msgs), 24)
+        pk = api_route("/api/packets", {"nid": 3, "direction": "sol"})
         self.assertEqual(pk["mandatory"][0]["num"], 15)
         self.assertTrue(any(p["num"] == 21 for p in pk["optional"]))
-        r = api.generate(_json.dumps({"direction": "sol", "nid": 3, "version": "3.0",
-                                      "nid_c": 1, "nid_bg": 100, "packets": [15],
-                                      "m_ack": 1, "v_ema": 100, "l_endsection": 8000,
-                                      "d_dp": 100, "q_scale": 1}))
+        r = api_route("/api/generate", {"direction": "sol", "nid": 3, "version": "3.0",
+                                        "nid_c": 1, "nid_bg": 100, "packets": [15],
+                                        "m_ack": 1, "v_ema": 100, "l_endsection": 8000,
+                                        "d_dp": 100, "q_scale": 1})
         self.assertTrue(r["hex"].startswith("03"))
-        self.assertEqual(api.validate(3, "sol", [15]), [])
+        self.assertEqual(api_route("/api/validate", {"nid": 3, "direction": "sol", "packets": [15]}), [])
 
 
 class TestStepWorkflow(unittest.TestCase):
     def test_telegram_group_per_balise(self):
-        import json as _json
-        from etcs_lang.webui import Api
+        from etcs_lang.webui import api_route
         from etcs_lang.telegram import decode_telegram
-        api = Api()
-        r = api.generate_telegram(_json.dumps({
+        r = api_route("/api/generate_telegram", {
             "version": "3.0", "nid_c": 1, "nid_bg": 100, "n_total": 3,
-            "m_mcount": 7, "packets": [0, 2, 3], "nid_vbcmk": 5}))
+            "m_mcount": 7, "packets": [0, 2, 3], "nid_vbcmk": 5})
         self.assertEqual(len(r["telegrams"]), 3)
         for i, t in enumerate(r["telegrams"]):
             dec = decode_telegram(bytes.fromhex(t["hex"]))
@@ -302,9 +296,8 @@ class TestStepWorkflow(unittest.TestCase):
             self.assertEqual(dec.packets[0].fields["NID_VBCMK"], 5)
 
     def test_balise_packet_list(self):
-        from etcs_lang.webui import Api
-        api = Api()
-        pkts = api.balise_packets()
+        from etcs_lang.webui import api_route
+        pkts = api_route("/api/balise_packets", {})
         nums = [p["num"] for p in pkts]
         for n in (0, 2, 3, 15, 42, 65, 136):
             self.assertIn(n, nums)

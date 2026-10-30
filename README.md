@@ -77,8 +77,8 @@ python -m etcs_lang.cli decode <hex> --kind loop               # décoder un mes
 ## Interface graphique (fonctionnement par étapes)
 
 ```bash
-pip install pywebview        # dépendance GUI uniquement
-python -m etcs_lang.webui    # ouvre une fenêtre navigateur
+python -m etcs_lang.webui    # serveur local 127.0.0.1, le navigateur s'ouvre tout seul
+# aucune dépendance externe : bibliothèque standard Python uniquement
 ```
 
 **Étape 1 — type de transmission** : Télégramme Eurobalise **ou** Message radio Euroradio (Euroloop non proposé).

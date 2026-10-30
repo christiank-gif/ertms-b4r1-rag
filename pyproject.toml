@@ -9,8 +9,7 @@ description = "ERTMS/ETCS B4R1 message generator (SUBSET-026 chapters 6, 7, 8): 
 readme = "README.md"
 requires-python = ">=3.10"
 
-[project.optional-dependencies]
-gui = ["pywebview>=4.0"]
+
 license = { text = "MIT" }
 
 [tool.setuptools]
