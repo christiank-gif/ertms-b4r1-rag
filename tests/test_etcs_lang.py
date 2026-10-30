@@ -284,7 +284,15 @@ class TestStepWorkflow(unittest.TestCase):
         from etcs_lang.telegram import decode_telegram
         r = api_route("/api/generate_telegram", {
             "version": "3.0", "nid_c": 1, "nid_bg": 100, "n_total": 3,
-            "m_mcount": 7, "packets": [0, 2, 3], "nid_vbcmk": 5})
+            "m_mcount": 7,
+            "packets": [
+                {"num": 0, "values": {"NID_VBCMK": 5}},
+                {"num": 2, "values": {"M_VERSION": "3.0"}},
+                {"num": 3, "values": {"Q_SCALE": 0, "D_VALIDNV": 1000, "NID_C": 1,
+                                      "N_ITER": 0, "V_NVSHUNT": 2, "V_NVSTFF": 2,
+                                      "V_NVONSIGHT": 2, "V_NVLIMSUPERV": 2,
+                                      "V_NVUNFIT": 2, "V_NVREL": 2}},
+            ]})
         self.assertEqual(len(r["telegrams"]), 3)
         for i, t in enumerate(r["telegrams"]):
             dec = decode_telegram(bytes.fromhex(t["hex"]))
@@ -301,3 +309,40 @@ class TestStepWorkflow(unittest.TestCase):
         nums = [p["num"] for p in pkts]
         for n in (0, 2, 3, 15, 42, 65, 136):
             self.assertIn(n, nums)
+
+
+class TestGenericPacketBuilder(unittest.TestCase):
+    def test_packet_21_with_niter(self):
+        from etcs_lang.packets import build_packet_from_fields
+        from etcs_lang.bitstream import BitReader
+        vals = {"Q_DIR": 0, "Q_SCALE": 1, "D_GRADIENT": 0, "Q_GDIR": 0, "G_A": 0,
+                "N_ITER": 1, "D_GRADIENT_0": 1000, "Q_GDIR_0": 1, "G_A_0": 251,
+                "D_GRADIENT_1": 500, "Q_GDIR_1": 0, "G_A_1": 0}
+        data = build_packet_from_fields(21, "track_to_train", vals)
+        r = BitReader(data)
+        r.read_uint(8); r.read_uint(2); r.read_uint(13)
+        r.read_uint(2); r.read_uint(15); r.read_uint(1); r.read_uint(8)
+        self.assertEqual(r.read_uint(5), 1)          # N_ITER
+        self.assertEqual(r.read_uint(15), 1000)      # D_GRADIENT_0
+        self.assertEqual(r.read_uint(1), 1)          # Q_GDIR_0
+        self.assertEqual(r.read_uint(8), 251)        # G_A_0
+        self.assertEqual(r.read_uint(15), 500)       # D_GRADIENT_1
+
+    def test_packet_15_conditional_fields(self):
+        from etcs_lang.webui import api_route
+        from etcs_lang.telegram import decode_telegram
+        r = api_route("/api/generate_telegram", {
+            "version": "3.0", "nid_c": 1, "nid_bg": 100, "n_total": 1,
+            "packets": [{"num": 15, "values": {
+                "Q_SCALE": 1, "V_EMA": 20, "T_EMA": 60, "N_ITER": 0,
+                "L_SECTION_0": 1000, "Q_SECTIONTIMER_0": 0, "T_SECTIONTIMER_0": 0,
+                "D_SECTIONTIMERSTOPLOC_0": 0, "L_ENDSECTION": 5000,
+                "Q_SECTIONTIMER": 0, "T_SECTIONTIMER": 0, "D_SECTIONTIMERSTOPLOC": 0,
+                "Q_ENDTIMER": 0, "Q_DANGERPOINT": 1, "D_DP": 200,
+                "V_RELEASEDP": 6, "Q_OVERLAP": 0}}]})
+        dec = decode_telegram(bytes.fromhex(r["telegrams"][0]["hex"]))
+        p15 = [p for p in dec.packets if p.number == 15][0]
+        self.assertEqual(p15.fields["Q_DANGERPOINT"], 1)
+        self.assertEqual(p15.fields["D_DP"], 200)
+        self.assertEqual(p15.fields["Q_OVERLAP"], 0)
+        self.assertNotIn("D_STARTOL", p15.fields)

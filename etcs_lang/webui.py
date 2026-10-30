@@ -22,11 +22,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from .generator import MessageGenerator
 from .messages import TRAIN_TO_TRACK_MESSAGES, TRACK_TO_TRAIN_MESSAGES, build_message
 from .packets import (
-    packet_name, build_packet_0_vbcmk, build_packet_2_system_version_order,
-    build_packet_3_national_values, build_packet_15_l2_ma, build_packet_21_gradient,
-    build_packet_27_issp, build_packet_41_level_transition,
-    build_packet_42_session_mgmt, build_packet_44_external_data,
-    build_packet_65_tsr, build_packet_136_infill_location,
+    packet_name, packet_fields, build_packet_from_fields, build_packet_0_vbcmk,
 )
 from .telegram import build_telegram
 from .rules import allowed_packets, validate_message
@@ -124,18 +120,29 @@ def radio_generate(p):
 
 
 def telegram_generate(p):
+    """p['packets'] = list of {'num': n, 'values': {...}} built by the user."""
     version = p.get("version", "3.0")
     nid_c = int(p.get("nid_c", 1))
     nid_bg = int(p.get("nid_bg", 100))
     n_total = max(1, min(8, int(p.get("n_total", 1))))
-    gen = MessageGenerator("sol", system_version=version, nid_c=nid_c, nid_bg=nid_bg)
-    selected = [int(x) for x in p.get("packets", [])]
     pkts = []
-    if 0 in selected:
-        pkts.append(BALISE_PACKET_BUILDERS[0](gen, p))  # packet 0 first (§8.4.2.3)
-    for n in selected:
-        if n != 0 and n in BALISE_PACKET_BUILDERS:
-            pkts.append(BALISE_PACKET_BUILDERS[n](gen, p))
+    for spec in p.get("packets", []):
+        num = int(spec["num"])
+        values = dict(spec.get("values", {}))
+        values.setdefault("Q_DIR", 0)
+        if num == 2 and "M_VERSION" not in values:
+            values["M_VERSION"] = version
+        if num == 0:
+            pkts.append(build_packet_0_vbcmk(int(values.get("NID_VBCMK", 0))))  # first (§8.4.2.3)
+        else:
+            pkts.append(build_packet_from_fields(num, "track_to_train", values))
+    def _is_pkt0(b):
+        bits = b if isinstance(b, list) else None
+        if bits is None:
+            from .bitstream import BitReader
+            bits = BitReader(b).to_bits()
+        return bits[:8] == [0]*8
+    pkts.sort(key=lambda b: 0 if _is_pkt0(b) else 1)  # packet 0 first (§8.4.2.3)
     telegrams = []
     for n_pig in range(n_total):
         data = build_telegram(version, n_pig=n_pig, n_total=n_total,
@@ -158,8 +165,19 @@ def api_route(path, body):
         lab = lambda p: {"num": p, "name": packet_name(p, d)}
         return {"mandatory": [lab(p) for p in mandatory], "optional": [lab(p) for p in optional]}
     if path == "/api/balise_packets":
-        return [{"num": n, "name": packet_name(n, "track_to_train")}
-                for n in sorted(BALISE_PACKET_BUILDERS)]
+        from .packets import PACKET_DEFS
+        nums = sorted({int(k.split("#")[0]) for k, v in PACKET_DEFS.items()
+                       if v["direction"] == "track_to_train" and k.split("#")[0].isdigit()})
+        return [{"num": n, "name": packet_name(n, "track_to_train")} for n in nums]
+    if path == "/api/packet_fields":
+        num = int(body["num"])
+        d = body.get("direction", "track_to_train")
+        fields = packet_fields(num, d)
+        return {"num": num, "name": packet_name(num, d),
+                "fields": [{"name": f["name"], "bits": f["length_bits"],
+                            "repeat": f["repeat"], "comment": f.get("comment", "")}
+                           for f in fields
+                           if f["name"] not in ("NID_PACKET", "L_PACKET", "Q_DIR")]}
     if path == "/api/validate":
         d = "track_to_train" if body.get("direction") == "sol" else "train_to_track"
         return validate_message(int(body["nid"]), d, [int(x) for x in body.get("packets", [])])
