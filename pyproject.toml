@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "etcs-lang-b4r1"
+version = "1.0.0"
+description = "ERTMS/ETCS B4R1 message generator (SUBSET-026 chapters 6, 7, 8): track-to-train and train-to-track messages, balise telegrams, loop messages"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+[tool.setuptools]
+packages = ["etcs_lang"]
+
+[tool.setuptools.package-data]
+etcs_lang = ["data/*.json"]

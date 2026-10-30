@@ -1,0 +1,4622 @@
+{
+ "0": {
+  "number": 0,
+  "name": "Virtual Balise Cover marker",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "NID_VBCMK",
+    "repeat": false,
+    "length_bits": 6,
+    "comment": "7.4.2.1"
+   }
+  ]
+ },
+ "0#train_to_track": {
+  "number": 0,
+  "name": "Position Report",
+  "direction": "train_to_track",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_LRBG",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIRLRBG",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_DLRBG",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_DOUBTOVER",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_DOUBTUNDER",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_INTEGRITY",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_TRAININT",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "If Q_INTEGRITY = “Train integrity confirmed by external source” or “Train integrity  confirmed by driver”"
+   },
+   {
+    "name": "V_TRAIN",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIRTRAIN",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "M_MODE",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "M_LEVEL",
+    "repeat": false,
+    "length_bits": 3,
+    "comment": ""
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "If M_LEVEL = NTC 7.4.3.2"
+   }
+  ]
+ },
+ "1": {
+  "number": 1,
+  "name": "Position Report based on two balise groups",
+  "direction": "train_to_track",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_LRBG",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIRLRBG",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": "Train orientation according to reference direction"
+   },
+   {
+    "name": "Q_DLRBG",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": "Train front position according to reference direction"
+   },
+   {
+    "name": "L_DOUBTOVER",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_DOUBTUNDER",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_INTEGRITY",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_TRAININT",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "If Q_INTEGRITY = “Train integrity confirmed by external source” or “Train integrity  confirmed by driver”"
+   },
+   {
+    "name": "V_TRAIN",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIRTRAIN",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": "Actual running direction according to reference direction"
+   },
+   {
+    "name": "M_MODE",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "M_LEVEL",
+    "repeat": false,
+    "length_bits": 3,
+    "comment": ""
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "If M_LEVEL = NTC 7.4.3.3"
+   }
+  ]
+ },
+ "10": {
+  "number": 10,
+  "name": "Safe consist length information for Supervised Manoeuvre",
+  "direction": "train_to_track",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SAFECONSISTLENGTH",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "L_CONSISTFRONTENGINENOM",
+    "repeat": false,
+    "length_bits": 12,
+    "comment": "Only if Q_SAFECONSISTLENGTH = 1,"
+   },
+   {
+    "name": "L_CONSISTFRONTENGINEMIN",
+    "repeat": false,
+    "length_bits": 12,
+    "comment": ""
+   },
+   {
+    "name": "L_CONSISTFRONTENGINEMAX",
+    "repeat": false,
+    "length_bits": 12,
+    "comment": ""
+   },
+   {
+    "name": "L_CONSISTREARENGINENOM",
+    "repeat": false,
+    "length_bits": 12,
+    "comment": ""
+   },
+   {
+    "name": "L_CONSISTREARENGINEMIN",
+    "repeat": false,
+    "length_bits": 12,
+    "comment": ""
+   },
+   {
+    "name": "L_CONSISTREARENGINEMAX",
+    "repeat": false,
+    "length_bits": 12,
+    "comment": "7.4.3.5"
+   }
+  ]
+ },
+ "11": {
+  "number": 11,
+  "name": "Validated train data",
+  "direction": "train_to_track",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "NC_CDTRAIN",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": ""
+   },
+   {
+    "name": "NC_TRAIN",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_TRAIN",
+    "repeat": false,
+    "length_bits": 12,
+    "comment": ""
+   },
+   {
+    "name": "V_MAXTRAIN",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "M_LOADINGGAUGE",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "M_AXLELOADCAT",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "M_AIRTIGHT",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "N_AXLE",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "M_VOLTAGE",
+    "repeat": true,
+    "length_bits": 4,
+    "comment": "Identity of the traction system"
+   },
+   {
+    "name": "NID_CTRACTION",
+    "repeat": true,
+    "length_bits": 10,
+    "comment": "NID_CTRACTION(k) given only if M_VOLTAGE(k) ≠ 0"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": true,
+    "length_bits": 8,
+    "comment": "Type of National System available 7.4.3.5.1"
+   }
+  ]
+ },
+ "12": {
+  "number": 12,
+  "name": "Level 1 Movement Authority",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "V_MAIN",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "V_EMA",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "T_EMA",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "Can be set to “no time-out”"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "Set to zero if V_MAIN = 0 or if only one section in the MA"
+   },
+   {
+    "name": "L_SECTION",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_SECTIONTIMER",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "T_SECTIONTIMER",
+    "repeat": true,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "D_SECTIONTIMERSTOPLOC",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_ENDSECTION",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_SECTIONTIMER",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "T_SECTIONTIMER",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "D_SECTIONTIMERSTOPLOC",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_ENDTIMER",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "T_ENDTIMER",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "D_ENDTIMERSTARTLOC",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_DANGERPOINT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_DP",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "V_RELEASEDP",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "Q_OVERLAP",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_STARTOL",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "T_OL",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "D_OL",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "V_RELEASEOL",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": "7.4.2.3.1"
+   }
+  ]
+ },
+ "12#train_to_track": {
+  "number": 12,
+  "name": "Default train data for Supervised Manoeuvre",
+  "direction": "train_to_track",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "NC_CDTRAIN",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": ""
+   },
+   {
+    "name": "NC_TRAIN",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "V_MAXTRAIN",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "M_LOADINGGAUGE",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "M_AXLELOADCAT",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "M_AIRTIGHT",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "N_AXLE",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "M_VOLTAGE",
+    "repeat": true,
+    "length_bits": 4,
+    "comment": "Identity of the traction system"
+   },
+   {
+    "name": "NID_CTRACTION",
+    "repeat": true,
+    "length_bits": 10,
+    "comment": "NID_CTRACTION(k) given only if M_VOLTAGE(k) ≠ 0 7.4.3.6"
+   }
+  ]
+ },
+ "13": {
+  "number": 13,
+  "name": "Staff Responsible distance Information from loop",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_NEWCOUNTRY",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "If Q_NEWCOUNTRY = 1"
+   },
+   {
+    "name": "NID_BG",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": "Main signal balise group"
+   },
+   {
+    "name": "Q_NEWCOUNTRY",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "If Q_NEWCOUNTRY = 1"
+   },
+   {
+    "name": "NID_BG",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": "Reference balise"
+   },
+   {
+    "name": "D_SR",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "Q_NEWCOUNTRY (k)"
+   }
+  ]
+ },
+ "131": {
+  "number": 131,
+  "name": "RBC transition order for RBC interfaced to GSM-R",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_RBCTR",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "“Accepting” RBC identity"
+   },
+   {
+    "name": "NID_RBC",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": ""
+   },
+   {
+    "name": "NID_RADIO",
+    "repeat": false,
+    "length_bits": 64,
+    "comment": "“Accepting” RBC radio subscriber number"
+   },
+   {
+    "name": "Q_SLEEPSESSION",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "7.4.2.28"
+   }
+  ]
+ },
+ "132": {
+  "number": 132,
+  "name": "Danger for Shunting information",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_ASPECT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "7.4.2.29"
+   }
+  ]
+ },
+ "133": {
+  "number": 133,
+  "name": "Radio infill area information",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_RIU",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "RIU ETCS identity"
+   },
+   {
+    "name": "NID_RIU",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": ""
+   },
+   {
+    "name": "NID_RADIO",
+    "repeat": false,
+    "length_bits": 64,
+    "comment": ""
+   },
+   {
+    "name": "D_INFILL",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "Refers to the next main signal balise group (relevant only for the case of establishing a communication session)"
+   },
+   {
+    "name": "NID_BG",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": "7.4.2.30"
+   }
+  ]
+ },
+ "134": {
+  "number": 134,
+  "name": "EOLM Packet",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "NID_LOOP",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": ""
+   },
+   {
+    "name": "D_LOOP",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_LOOP",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_LOOPDIR",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "Q_SSCODE",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": "7.4.2.31"
+   }
+  ]
+ },
+ "135": {
+  "number": 135,
+  "name": "Stop Shunting on desk opening",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": "7.4.2.32"
+   }
+  ]
+ },
+ "136": {
+  "number": 136,
+  "name": "Infill location reference",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_NEWCOUNTRY",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "If Q_NEWCOUNTRY = 1"
+   },
+   {
+    "name": "NID_BG",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": "7.4.2.33"
+   }
+  ]
+ },
+ "137": {
+  "number": 137,
+  "name": "Stop if in Staff Responsible",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SRSTOP",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "7.4.2.34"
+   }
+  ]
+ },
+ "138": {
+  "number": 138,
+  "name": "Reversing area information",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_STARTREVERSE",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_REVERSEAREA",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "7.4.2.35"
+   }
+  ]
+ },
+ "139": {
+  "number": 139,
+  "name": "Reversing supervision information",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_REVERSE",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "V_REVERSE",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": "7.4.2.36"
+   }
+  ]
+ },
+ "140": {
+  "number": 140,
+  "name": "Train running number from RBC",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "NID_OPERATIONAL",
+    "repeat": false,
+    "length_bits": 32,
+    "comment": "7.4.2.37"
+   }
+  ]
+ },
+ "141": {
+  "number": 141,
+  "name": "Default Gradient for Temporary Speed Restriction",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_GDIR",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "0 = downhill 1= uphill"
+   },
+   {
+    "name": "G_TSR",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "7.4.2.37.1"
+   }
+  ]
+ },
+ "143": {
+  "number": 143,
+  "name": "Session Management with neighbouring Radio Infill Unit",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_RIU",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "RIU ETCS identity"
+   },
+   {
+    "name": "NID_RIU",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": ""
+   },
+   {
+    "name": "NID_RADIO",
+    "repeat": false,
+    "length_bits": 64,
+    "comment": "7.4.2.37.2"
+   }
+  ]
+ },
+ "145": {
+  "number": 145,
+  "name": "Inhibition of balise group message consistency reaction",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": "7.4.2.37.3"
+   }
+  ]
+ },
+ "15": {
+  "number": 15,
+  "name": "Level 2 Movement Authority",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "V_EMA",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "T_EMA",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "Can be set to “no time-out”"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "Set to zero if only one section in the MA"
+   },
+   {
+    "name": "L_SECTION",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_SECTIONTIMER",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "T_SECTIONTIMER",
+    "repeat": true,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "D_SECTIONTIMERSTOPLOC",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_ENDSECTION",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_SECTIONTIMER",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "T_SECTIONTIMER",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "D_SECTIONTIMERSTOPLOC",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_ENDTIMER",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "T_ENDTIMER",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "D_ENDTIMERSTARTLOC",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_DANGERPOINT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_DP",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "V_RELEASEDP",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "Q_OVERLAP",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_STARTOL",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "T_OL",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "D_OL",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "V_RELEASEOL",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": "7.4.2.5"
+   }
+  ]
+ },
+ "16": {
+  "number": 16,
+  "name": "Repositioning Information",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_SECTION",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "7.4.2.6"
+   }
+  ]
+ },
+ "180": {
+  "number": 180,
+  "name": "LSSMA display toggle order",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_LSSMA",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "T_LSSMA",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "Only if Q_LSSMA = 1 7.4.2.37.4"
+   }
+  ]
+ },
+ "181": {
+  "number": 181,
+  "name": "Generic LS function marker",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": "7.4.2.38"
+   }
+  ]
+ },
+ "2": {
+  "number": 2,
+  "name": "System Version order",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "M_VERSION",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": "7.4.2.1.1"
+   }
+  ]
+ },
+ "2#train_to_track": {
+  "number": 2,
+  "name": "Onboard supported system versions",
+  "direction": "train_to_track",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "M_VERSION",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "M_VERSION (k)"
+   }
+  ]
+ },
+ "21": {
+  "number": 21,
+  "name": "Gradient Profile",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_GRADIENT",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_GDIR",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "0 = downhill 1= uphill"
+   },
+   {
+    "name": "G_A",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "D_GRADIENT",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_GDIR",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": "0 = downhill 1= uphill"
+   },
+   {
+    "name": "G_A",
+    "repeat": true,
+    "length_bits": 8,
+    "comment": "7.4.2.7"
+   }
+  ]
+ },
+ "254": {
+  "number": 254,
+  "name": "Default balise, loop or RIU information",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": "7.4.2.39"
+   }
+  ]
+ },
+ "255": {
+  "number": 255,
+  "name": "End of Information",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "= 255 (1111 1111) 7.4.3 7.4.3.1"
+   }
+  ]
+ },
+ "27": {
+  "number": 27,
+  "name": "International Static Speed Profile",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_STATIC",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "V_STATIC",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": "Basic SSP"
+   },
+   {
+    "name": "Q_FRONT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "Q_DIFF(n)"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "D_STATIC",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "V_STATIC",
+    "repeat": true,
+    "length_bits": 7,
+    "comment": "Basic SSP"
+   },
+   {
+    "name": "Q_FRONT",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": true,
+    "length_bits": 5,
+    "comment": "Q_DIFF(k,m)"
+   }
+  ]
+ },
+ "3": {
+  "number": 3,
+  "name": "National Values",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_VALIDNV",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "Identification of national areas to which the set applies"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": true,
+    "length_bits": 10,
+    "comment": "Identification of additional national area(s) to which the set applies"
+   },
+   {
+    "name": "V_NVSHUNT",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "V_NVSTFF",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "V_NVONSIGHT",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "V_NVLIMSUPERV",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "V_NVUNFIT",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "V_NVREL",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "D_NVROLL",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_NVSBTSMPERM",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "Q_NVEMRRLS",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "Q_NVGUIPERM",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "Q_NVSBFBPERM",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "Q_NVINHSMICPERM",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "V_NVALLOWOVTRP",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "V_NVSUPOVTRP",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "D_NVOVTRP",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "T_NVOVTRP",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "D_NVPOTRP",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_NVCONTACT",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "T_NVCONTACT",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "M_NVDERUN",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_NVSTFF",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_NVDRIVER_ADHES",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "A_NVMAXREDADH1",
+    "repeat": false,
+    "length_bits": 6,
+    "comment": ""
+   },
+   {
+    "name": "A_NVMAXREDADH2",
+    "repeat": false,
+    "length_bits": 6,
+    "comment": ""
+   },
+   {
+    "name": "A_NVMAXREDADH3",
+    "repeat": false,
+    "length_bits": 6,
+    "comment": ""
+   },
+   {
+    "name": "Q_NVLOCACC",
+    "repeat": false,
+    "length_bits": 6,
+    "comment": ""
+   },
+   {
+    "name": "M_NVAVADH",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "M_NVEBCL",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": ""
+   },
+   {
+    "name": "Q_NVKINT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "Q_NVKVINTSET",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": "Only if Q_NVKINT = 1, Q_NVKVINTSET and the following variables follow"
+   },
+   {
+    "name": "A_NVP12",
+    "repeat": false,
+    "length_bits": 6,
+    "comment": "Only if Q_NVKVINTSET = 1"
+   },
+   {
+    "name": "A_NVP23",
+    "repeat": false,
+    "length_bits": 6,
+    "comment": "Only if Q_NVKVINTSET = 1"
+   },
+   {
+    "name": "V_NVKVINT",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": "= 0 km/h"
+   },
+   {
+    "name": "M_NVKVINT",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": "Valid between V_NVKVINT and"
+   },
+   {
+    "name": "M_NVKVINT",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": "Only if Q_NVKVINTSET = 1 Valid between V_NVKVINT and"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "V_NVKVINT(n)"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "Q_NVKVINTSET",
+    "repeat": true,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "A_NVP12",
+    "repeat": true,
+    "length_bits": 6,
+    "comment": "Only if Q_NVKVINTSET(k) = 1"
+   },
+   {
+    "name": "A_NVP23",
+    "repeat": true,
+    "length_bits": 6,
+    "comment": "Only if Q_NVKVINTSET(k) = 1"
+   },
+   {
+    "name": "V_NVKVINT",
+    "repeat": true,
+    "length_bits": 7,
+    "comment": "= 0km/h"
+   },
+   {
+    "name": "M_NVKVINT",
+    "repeat": true,
+    "length_bits": 7,
+    "comment": "Valid between V_NVKVINT(k) and V_NVKVINT(k,1) If Q_NVKVINTSET(k) = 1, gives the correction factor if maximum emergency brake deceleration is lower than A_NVP12(k)"
+   },
+   {
+    "name": "M_NVKVINT",
+    "repeat": true,
+    "length_bits": 7,
+    "comment": "Only if Q_NVKVINTSET(k) = 1 Valid between V_NVKVINT(k) and V_NVKVINT(k,1) Gives the correction factor if maximum emergency brake deceleration is higher than"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": true,
+    "length_bits": 5,
+    "comment": "V_NVKVINT(k,m)"
+   },
+   {
+    "name": "L_NVKRINT",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "= 0m"
+   },
+   {
+    "name": "M_NVKRINT",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "Valid between L_NVKRINT and"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "L_NVKRINT(l)"
+   },
+   {
+    "name": "M_NVKTINT",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "7.4.2.2"
+   }
+  ]
+ },
+ "31": {
+  "number": 31,
+  "name": "RBC transition order for RBC interfaced to FRMCS only",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_RBCTR",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "“Accepting” RBC identity"
+   },
+   {
+    "name": "NID_RBC",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": ""
+   },
+   {
+    "name": "Q_SLEEPSESSION",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "7.4.2.7.2"
+   }
+  ]
+ },
+ "32": {
+  "number": 32,
+  "name": "Session Management for RBC interfaced to FRMCS only",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_RBC",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "RBC ETCS identity : NID_C not relevant if NID_RBC has value “Contact last known RBC”"
+   },
+   {
+    "name": "NID_RBC",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": ""
+   },
+   {
+    "name": "Q_SLEEPSESSION",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "7.4.2.8"
+   }
+  ]
+ },
+ "39": {
+  "number": 39,
+  "name": "Track Condition Change of traction system",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_TRACTION",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_VOLTAGE",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": "Identity of the traction system"
+   },
+   {
+    "name": "NID_CTRACTION",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "NID_CTRACTION given only if M_VOLTAGE ≠ 0 7.4.2.8.1"
+   }
+  ]
+ },
+ "4": {
+  "number": 4,
+  "name": "Error reporting",
+  "direction": "train_to_track",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "M_ERROR",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "error type identifier 7.4.3.4.1"
+   }
+  ]
+ },
+ "40": {
+  "number": 40,
+  "name": "Track Condition Change of allowed current consumption",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_CURRENT",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_CURRENT",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "Allowed current consumption. 7.4.2.9"
+   }
+  ]
+ },
+ "41": {
+  "number": 41,
+  "name": "Level Transition Order",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_LEVELTR",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_LEVELTR",
+    "repeat": false,
+    "length_bits": 3,
+    "comment": ""
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "If M_LEVELTR = 1 (NTC)"
+   },
+   {
+    "name": "L_ACKLEVELTR",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "M_LEVELTR",
+    "repeat": true,
+    "length_bits": 3,
+    "comment": ""
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": true,
+    "length_bits": 8,
+    "comment": "If M_LEVELTR(k) = 1 (NTC)"
+   },
+   {
+    "name": "L_ACKLEVELTR",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": "7.4.2.10"
+   }
+  ]
+ },
+ "42": {
+  "number": 42,
+  "name": "Session Management for RBC interfaced to GSM-R",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_RBC",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "RBC ETCS identity : NID_C not relevant if NID_RBC has value “Contact last known RBC”"
+   },
+   {
+    "name": "NID_RBC",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": ""
+   },
+   {
+    "name": "NID_RADIO",
+    "repeat": false,
+    "length_bits": 64,
+    "comment": "not relevant if NID_RBC has value “Contact last known RBC”"
+   },
+   {
+    "name": "Q_SLEEPSESSION",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "7.4.2.11"
+   }
+  ]
+ },
+ "44": {
+  "number": 44,
+  "name": "Data used by applications outside the ERTMS/ETCS system.",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "NID_XUSER",
+    "repeat": false,
+    "length_bits": 9,
+    "comment": ""
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "Only if NID_XUSER = 102 (National System functions) Other data, depending on"
+   }
+  ]
+ },
+ "44#train_to_track": {
+  "number": 44,
+  "name": "Data used by applications outside the ERTMS/ETCS system.",
+  "direction": "train_to_track",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "NID_XUSER",
+    "repeat": false,
+    "length_bits": 9,
+    "comment": "Other data, depending on"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 1023,
+    "comment": "1 Byte 7.5.1.48.1 L_NVKRINT Name Train length step used to define the integrated correction factor Kr Description This variable is part of the National Values Length of variable Minimum Value Maximum Value Resolution/formula 5 bits Special/Reserved Values"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 8191,
+    "comment": "1 bit 7.5.1.49.1 L_PBDSR Name Length of speed restriction to ensure permitted braking distance Description Length of variable Minimum Value Maximum Value Resolution/formula 15 bits 0 cm 327.670 km 10 cm, 1m or 10 m depends on Q_SCALE. 7.5.1.50"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 255,
+    "comment": "1 Text String Element 7.5.1.54"
+   },
+   {
+    "name": "A",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "HS17",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "B1",
+    "repeat": false,
+    "length_bits": 3,
+    "comment": ""
+   },
+   {
+    "name": "B2",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": ""
+   },
+   {
+    "name": "C2",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "C3",
+    "repeat": false,
+    "length_bits": 6,
+    "comment": ""
+   },
+   {
+    "name": "C4",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "D2",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "D3",
+    "repeat": false,
+    "length_bits": 9,
+    "comment": ""
+   },
+   {
+    "name": "D4",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "D4XL",
+    "repeat": false,
+    "length_bits": 11,
+    "comment": ""
+   },
+   {
+    "name": "E4",
+    "repeat": false,
+    "length_bits": 12,
+    "comment": ""
+   },
+   {
+    "name": "GC",
+    "repeat": false,
+    "length_bits": 0,
+    "comment": "Spare xxx1 xxxx Spare xx1x xxxx Spare x1xx xxxx Spare 1xxx xxxx Spare 7.5.1.67.2 M_LINEAXLELOADCAT Name Line axle load categories Description Defining which axle load categories are permitted on a line (refer to TSI INF) in order to perform the Route suitability function Length of variable Minimum Value Maximum Value Resolution/formula 16 bits Bitset Special/Reserved Values xxxx xxxx xxxx xxx1"
+   },
+   {
+    "name": "G1",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "GA",
+    "repeat": false,
+    "length_bits": 3,
+    "comment": ""
+   },
+   {
+    "name": "GB",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": ""
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 253,
+    "comment": "Numbers Special/Reserved Values"
+   },
+   {
+    "name": "T_NVCONTACT",
+    "repeat": false,
+    "length_bits": 101,
+    "comment": "Air tightness. Initial state: no request for air tightness"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 1022,
+    "comment": "integers Special/Reserved Values"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 31,
+    "comment": "integers 7.5.1.81"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Special/Reserved Values"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Special/Reserved Values"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Numbers Special/Reserved Values"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 16382,
+    "comment": "Numbers Special/Reserved Values"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 1023,
+    "comment": "Numbers 7.5.1.86.1 NID_CTRACTION (Values to be assigned according to 7.3.1.3) Name Country identifier of the traction system Description It identifies the information, additional to M_VOLTAGE, required to fully define the traction system. Length of variable Minimum Value Maximum Value Resolution/formula 10 bits"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 1023,
+    "comment": "Numbers 7.5.1.87"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 16383,
+    "comment": "Numbers 7.5.1.90"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 255,
+    "comment": "Number Special/Reserved Values 0-126 Reserved for non RBC transmission (balise, loop or radio infill) 127-255 Reserved for RBC transmission 7.5.1.91"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 255,
+    "comment": "Numbers 7.5.1.91.1 NID_MN (Values to be assigned according to 7.3.1.3) Name Identity of GSM-R Radio Network Description The NID_MN identifies the GSM-R network the GSM-R Mobile Terminal has to register with. The NID_MN consists of up to 6 digits which are entered left adjusted into the data field, the leftmost digit is the digit to be dialled first. In case the NID_MN is shorter than 6 digits, the remaining space is to be filled with special character “F”. For further information about NID_MN refer to Subset-54. Length of variable Minimum Value Maximum Value Resolution/formula 24 bits"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 999999,
+    "comment": "Binary Coded Decimal Special/Reserved Values For each digit ; Values A – E Not Used"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 255,
+    "comment": "Numbers 7.5.1.94"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 255,
+    "comment": "7.5.1.98.1 NID_TEXTMESSAGE Name Text message identifier Description Identity of a text message from trackside to be used in a report of driver acknowledgement to the RBC Length of variable Minimum Value Maximum Value Resolution/formula 8 bits"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 255,
+    "comment": "Number 7.5.1.99"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 255,
+    "comment": "Number Special/Reserved Values 0-126 Reserved for non RBC transmission (balise, loop or radio infill) 127-254 Reserved for RBC transmission"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 63,
+    "comment": "Number 7.5.1.100 NID_XUSER (Values to be assigned according to 7.3.1.3) Name Identity of user system Description Identity of user system for which remainder of packet is intended. Length of variable Minimum Value Maximum Value Resolution/formula 9 bits"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 511,
+    "comment": "Numbers 7.5.1.101 Q_ASPECT Name Aspect of “danger for shunting” signal Description Length of variable Minimum Value Maximum Value Resolution/formula 1 bit Special/Reserved Values"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "Special/Reserved Values"
+   },
+   {
+    "name": "FRMCS",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "FRMCS+GSM-R"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": "Special/Reserved Values"
+   },
+   {
+    "name": "0",
+    "repeat": false,
+    "length_bits": 255,
+    "comment": "Special/Reserved Values"
+   }
+  ]
+ },
+ "45": {
+  "number": 45,
+  "name": "Radio Network transition order",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_NETWORKTYPE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "NID_MN",
+    "repeat": false,
+    "length_bits": 24,
+    "comment": "If Q_NETWORTYPE = 1 or 2 7.4.2.11.2"
+   }
+  ]
+ },
+ "46": {
+  "number": 46,
+  "name": "Conditional Level Transition Order",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "M_LEVELTR",
+    "repeat": false,
+    "length_bits": 3,
+    "comment": ""
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "If M_LEVELTR = 1 (NTC)"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "M_LEVELTR",
+    "repeat": true,
+    "length_bits": 3,
+    "comment": ""
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": true,
+    "length_bits": 8,
+    "comment": "If M_LEVELTR(k) = 1 (NTC) 7.4.2.12"
+   }
+  ]
+ },
+ "49": {
+  "number": 49,
+  "name": "List of Balise Groups for SH Area",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "Q_NEWCOUNTRY",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": true,
+    "length_bits": 10,
+    "comment": "if Q_NEWCOUNTRY(k) = 1"
+   },
+   {
+    "name": "NID_BG",
+    "repeat": true,
+    "length_bits": 14,
+    "comment": "7.4.2.13"
+   }
+  ]
+ },
+ "5": {
+  "number": 5,
+  "name": "Linking",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_LINK",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_NEWCOUNTRY",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "if Q_NEWCOUNTRY = 1"
+   },
+   {
+    "name": "NID_BG",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": ""
+   },
+   {
+    "name": "Q_LINKORIENTATION",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "Q_LINKREACTION",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_LOCACC",
+    "repeat": false,
+    "length_bits": 6,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "D_LINK (k)"
+   },
+   {
+    "name": "Q_NEWCOUNTRY",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": "NID_C (k)"
+   }
+  ]
+ },
+ "5#train_to_track": {
+  "number": 5,
+  "name": "Train running number",
+  "direction": "train_to_track",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "NID_OPERATIONAL",
+    "repeat": false,
+    "length_bits": 32,
+    "comment": "7.4.3.4.2"
+   }
+  ]
+ },
+ "51": {
+  "number": 51,
+  "name": "Axle Load Speed Profile",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_TRACKINIT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_TRACKINIT",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Only if Q_TRACKINIT = 1"
+   },
+   {
+    "name": "D_AXLELOAD",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Only if"
+   },
+   {
+    "name": "L_AXLELOAD",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_FRONT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": "M_AXLELOADCAT(n)"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "D_AXLELOAD",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_AXLELOAD",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_FRONT",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": true,
+    "length_bits": 5,
+    "comment": "M_AXLELOADCAT(k,m)"
+   }
+  ]
+ },
+ "52": {
+  "number": 52,
+  "name": "Permitted Braking Distance Information",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_TRACKINIT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_TRACKINIT",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Only if Q_TRACKINIT = 1"
+   },
+   {
+    "name": "D_PBD",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Only if Q_TRACKINIT = 0, D_PBD and the following variables follow"
+   },
+   {
+    "name": "Q_GDIR",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "0 = downhill, 1 = uphill"
+   },
+   {
+    "name": "G_PBDSR",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "Gradient value to be used for the calculation"
+   },
+   {
+    "name": "Q_PBDSR",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_PBDSR",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_PBDSR",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "D_PBD",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_GDIR",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": "0 = downhill, 1 = uphill"
+   },
+   {
+    "name": "G_PBDSR",
+    "repeat": true,
+    "length_bits": 8,
+    "comment": "Gradient value to be used for the calculation"
+   },
+   {
+    "name": "Q_PBDSR",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_PBDSR",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_PBDSR",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": "7.4.2.14"
+   }
+  ]
+ },
+ "57": {
+  "number": 57,
+  "name": "Movement Authority Request Parameters",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "T_MAR",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "T_TIMEOUTRQST",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "T_CYCRQST",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "7.4.2.15"
+   }
+  ]
+ },
+ "58": {
+  "number": 58,
+  "name": "Position Report Parameters",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "T_CYCLOC",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "D_CYCLOC",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_LOC",
+    "repeat": false,
+    "length_bits": 3,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "D_LOC",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_LGTLOC",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": "7.4.2.16"
+   }
+  ]
+ },
+ "6": {
+  "number": 6,
+  "name": "Virtual Balise Cover order",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_VBCO",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_VBCMK",
+    "repeat": false,
+    "length_bits": 6,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": ""
+   },
+   {
+    "name": "T_VBC",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "Only if Q_VBCO = 1 7.4.2.3"
+   }
+  ]
+ },
+ "63": {
+  "number": 63,
+  "name": "List of Balise Groups in SR Authority",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "Q_NEWCOUNTRY",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": true,
+    "length_bits": 10,
+    "comment": "if Q_NEWCOUNTRY(k) = 1"
+   },
+   {
+    "name": "NID_BG",
+    "repeat": true,
+    "length_bits": 14,
+    "comment": "7.4.2.16.1"
+   }
+  ]
+ },
+ "64": {
+  "number": 64,
+  "name": "Inhibition of revocable TSRs from balises in level 2",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": "7.4.2.17"
+   }
+  ]
+ },
+ "65": {
+  "number": 65,
+  "name": "Temporary Speed Restriction",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "NID_TSR",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "D_TSR",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_TSR",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_FRONT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "V_TSR",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": "7.4.2.18"
+   }
+  ]
+ },
+ "66": {
+  "number": 66,
+  "name": "Temporary Speed Restriction Revocation",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "NID_TSR",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "Identity of TSR to be revoked 7.4.2.19"
+   }
+  ]
+ },
+ "67": {
+  "number": 67,
+  "name": "Track Condition Big Metal Masses",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_TRACKCOND",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_TRACKCOND",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "The distance for which integrity check alarms of balise transmission shall be ignored"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "D_TRACKCOND",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_TRACKCOND",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": "The distance for which integrity check alarms of balise transmission shall be ignored 7.4.2.20"
+   }
+  ]
+ },
+ "68": {
+  "number": 68,
+  "name": "Track Condition",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_TRACKINIT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_TRACKINIT",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Only if Q_TRACKINIT = 1"
+   },
+   {
+    "name": "D_TRACKCOND",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Only if"
+   },
+   {
+    "name": "L_TRACKCOND",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_TRACKCOND",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "D_TRACKCOND",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_TRACKCOND",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_TRACKCOND",
+    "repeat": true,
+    "length_bits": 4,
+    "comment": "7.4.2.20.1"
+   }
+  ]
+ },
+ "69": {
+  "number": 69,
+  "name": "Track Condition Station Platforms",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_TRACKINIT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_TRACKINIT",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Only if Q_TRACKINIT = 1"
+   },
+   {
+    "name": "D_TRACKCOND",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Only if"
+   },
+   {
+    "name": "L_TRACKCOND",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_PLATFORM",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": ""
+   },
+   {
+    "name": "Q_PLATFORM",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "D_TRACKCOND",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_TRACKCOND",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_PLATFORM",
+    "repeat": true,
+    "length_bits": 4,
+    "comment": ""
+   },
+   {
+    "name": "Q_PLATFORM",
+    "repeat": true,
+    "length_bits": 2,
+    "comment": "7.4.2.21"
+   }
+  ]
+ },
+ "70": {
+  "number": 70,
+  "name": "Route Suitability Data",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_TRACKINIT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "D_TRACKINIT",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Only if Q_TRACKINIT = 1"
+   },
+   {
+    "name": "D_SUITABILITY",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Only If Q_TRACKINIT = 0,"
+   },
+   {
+    "name": "Q_SUITABILITY",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "M_LINEGAUGE",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "If Q_SUITABILITY= loading gauge"
+   },
+   {
+    "name": "M_LINEAXLELOADCAT",
+    "repeat": false,
+    "length_bits": 16,
+    "comment": "If Q_SUITABILITY= axle load."
+   },
+   {
+    "name": "M_VOLTAGE",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": "If Q_SUITABILITY = traction system"
+   },
+   {
+    "name": "NID_CTRACTION",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "If Q_SUITABILITY = traction system and M_VOLTAGE ≠0"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "D_SUITABILITY",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_SUITABILITY",
+    "repeat": true,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "M_LINEGAUGE",
+    "repeat": true,
+    "length_bits": 8,
+    "comment": "If Q_SUITABILITY(k) = loading gauge"
+   },
+   {
+    "name": "M_LINEAXLELOADCAT",
+    "repeat": true,
+    "length_bits": 16,
+    "comment": "If Q_SUITABILITY(k) = axle load."
+   },
+   {
+    "name": "M_VOLTAGE",
+    "repeat": true,
+    "length_bits": 4,
+    "comment": "If Q_SUITABILITY(k) = traction system"
+   },
+   {
+    "name": "NID_CTRACTION",
+    "repeat": true,
+    "length_bits": 10,
+    "comment": "If Q_SUITABILITY(k) = traction system and M_VOLTAGE(k) ≠0 7.4.2.22 Packet number 71: Adhesion factor Description This packet is used when the trackside requests a change of the adhesion factor to be used in the brake model. Transmitted by Any Content Variable Length Comment"
+   },
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_ADHESION",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_ADHESION",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_ADHESION",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "7.4.2.23"
+   }
+  ]
+ },
+ "73": {
+  "number": 73,
+  "name": "Packet for sending plain text messages",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_TEXTCLASS",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_TEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "Start/end sub-conditions relation"
+   },
+   {
+    "name": "D_TEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Start sub-condition"
+   },
+   {
+    "name": "M_MODETEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": "Start sub-condition"
+   },
+   {
+    "name": "M_LEVELTEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 3,
+    "comment": "Start sub-condition"
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "If M_LEVELTEXTDISPLAY = 1 (NTC)"
+   },
+   {
+    "name": "L_TEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "End sub-condition"
+   },
+   {
+    "name": "T_TEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "End sub-condition"
+   },
+   {
+    "name": "M_MODETEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": "End sub-condition"
+   },
+   {
+    "name": "M_LEVELTEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 3,
+    "comment": "End sub-condition"
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "If M_LEVELTEXTDISPLAY = 1 (NTC)"
+   },
+   {
+    "name": "Q_TEXTCONFIRM",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_CONFTEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "If Q_TEXTCONFIRM ≠ 0"
+   },
+   {
+    "name": "Q_TEXTREPORT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "If Q_TEXTCONFIRM ≠ 0"
+   },
+   {
+    "name": "NID_TEXTMESSAGE",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "Only If Q_TEXTREPORT = 1"
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "Only If Q_TEXTREPORT = 1"
+   },
+   {
+    "name": "NID_RBC",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": "Only If Q_TEXTREPORT = 1"
+   },
+   {
+    "name": "L_TEXT",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "X_TEXT(L_TEXT)"
+   }
+  ]
+ },
+ "74": {
+  "number": 74,
+  "name": "Packet for sending fixed text messages",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_TEXTCLASS",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_TEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "Start/end sub-conditions relation"
+   },
+   {
+    "name": "D_TEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Start sub-condition"
+   },
+   {
+    "name": "M_MODETEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": "Start sub-condition"
+   },
+   {
+    "name": "M_LEVELTEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 3,
+    "comment": "Start sub-condition"
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "If M_LEVELTEXTDISPLAY = 1 (NTC)"
+   },
+   {
+    "name": "L_TEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "End sub-condition"
+   },
+   {
+    "name": "T_TEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "End sub-condition"
+   },
+   {
+    "name": "M_MODETEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 4,
+    "comment": "End sub-condition"
+   },
+   {
+    "name": "M_LEVELTEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 3,
+    "comment": "End sub-condition"
+   },
+   {
+    "name": "NID_NTC",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "If M_LEVELTEXTDISPLAY = 1 (NTC)"
+   },
+   {
+    "name": "Q_TEXTCONFIRM",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_CONFTEXTDISPLAY",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "If Q_TEXTCONFIRM ≠ 0"
+   },
+   {
+    "name": "Q_TEXTREPORT",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "If Q_TEXTCONFIRM ≠ 0"
+   },
+   {
+    "name": "NID_TEXTMESSAGE",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "Only If Q_TEXTREPORT = 1"
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "Only If Q_TEXTREPORT = 1"
+   },
+   {
+    "name": "NID_RBC",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": "Only If Q_TEXTREPORT = 1"
+   },
+   {
+    "name": "Q_TEXT",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": "7.4.2.25"
+   }
+  ]
+ },
+ "79": {
+  "number": 79,
+  "name": "Geographical Position Information",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "Q_NEWCOUNTRY",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "if Q_NEWCOUNTRY = 1"
+   },
+   {
+    "name": "NID_BG",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": "Geographical Position Reference Balise Group"
+   },
+   {
+    "name": "D_POSOFF",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_MPOSITION",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "Geographical Position counting direction"
+   },
+   {
+    "name": "M_POSITION",
+    "repeat": false,
+    "length_bits": 24,
+    "comment": "Track kilometre reference value"
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "Q_NEWCOUNTRY",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": true,
+    "length_bits": 10,
+    "comment": "if Q_NEWCOUNTRY(k) = 1"
+   },
+   {
+    "name": "NID_BG",
+    "repeat": true,
+    "length_bits": 14,
+    "comment": "Geographical Position Reference Balise Group"
+   },
+   {
+    "name": "D_POSOFF",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_MPOSITION",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": "Geographical Position counting direction"
+   },
+   {
+    "name": "M_POSITION",
+    "repeat": true,
+    "length_bits": 24,
+    "comment": "Track kilometre reference value 7.4.2.26"
+   }
+  ]
+ },
+ "80": {
+  "number": 80,
+  "name": "Mode profile",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "D_MAMODE",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_MAMODE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": "OS, LS, SH"
+   },
+   {
+    "name": "V_MAMODE",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "L_MAMODE",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_ACKMAMODE",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_MAMODE",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "N_ITER",
+    "repeat": false,
+    "length_bits": 5,
+    "comment": ""
+   },
+   {
+    "name": "D_MAMODE",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "M_MAMODE",
+    "repeat": true,
+    "length_bits": 2,
+    "comment": "OS, LS, SH"
+   },
+   {
+    "name": "V_MAMODE",
+    "repeat": true,
+    "length_bits": 7,
+    "comment": ""
+   },
+   {
+    "name": "L_MAMODE",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_ACKMAMODE",
+    "repeat": true,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_MAMODE",
+    "repeat": true,
+    "length_bits": 1,
+    "comment": "7.4.2.26.1"
+   }
+  ]
+ },
+ "88": {
+  "number": 88,
+  "name": "Level Crossing information",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_SCALE",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "NID_LX",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "D_LX",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "L_LX",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": ""
+   },
+   {
+    "name": "Q_LXSTATUS",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "V_LX",
+    "repeat": false,
+    "length_bits": 7,
+    "comment": "Only if Q_LXSTATUS = 1"
+   },
+   {
+    "name": "Q_STOPLX",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": "Only if Q_LXSTATUS = 1"
+   },
+   {
+    "name": "L_STOPLX",
+    "repeat": false,
+    "length_bits": 15,
+    "comment": "Only if Q_STOPLX = 1 7.4.2.26.2"
+   }
+  ]
+ },
+ "9": {
+  "number": 9,
+  "name": "Level 2 transition information",
+  "direction": "train_to_track",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   }
+  ]
+ },
+ "90": {
+  "number": 90,
+  "name": "Track Ahead Free up to level 2 transition location",
+  "direction": "track_to_train",
+  "fields": [
+   {
+    "name": "NID_PACKET",
+    "repeat": false,
+    "length_bits": 8,
+    "comment": ""
+   },
+   {
+    "name": "Q_DIR",
+    "repeat": false,
+    "length_bits": 2,
+    "comment": ""
+   },
+   {
+    "name": "L_PACKET",
+    "repeat": false,
+    "length_bits": 13,
+    "comment": ""
+   },
+   {
+    "name": "Q_NEWCOUNTRY",
+    "repeat": false,
+    "length_bits": 1,
+    "comment": ""
+   },
+   {
+    "name": "NID_C",
+    "repeat": false,
+    "length_bits": 10,
+    "comment": "If Q_NEWCOUNTRY = 1"
+   },
+   {
+    "name": "NID_BG",
+    "repeat": false,
+    "length_bits": 14,
+    "comment": "Level 2 transition location balise group 7.4.2.27"
+   }
+  ]
+ }
+}

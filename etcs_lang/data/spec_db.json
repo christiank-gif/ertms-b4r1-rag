@@ -1,0 +1,2232 @@
+{
+ "variables": {
+  "A_NVMAXREDADH1": {
+   "name": "A_NVMAXREDADH1",
+   "length_bits": 6,
+   "min": "0 m/s2",
+   "max": "3 m/s2",
+   "resolution": "0.05 m/s2",
+   "special": null
+  },
+  "A_NVMAXREDADH2": {
+   "name": "A_NVMAXREDADH2",
+   "length_bits": 6,
+   "min": "0 m/s2",
+   "max": "3 m/s2",
+   "resolution": "0.05 m/s2",
+   "special": null
+  },
+  "A_NVMAXREDADH3": {
+   "name": "A_NVMAXREDADH3",
+   "length_bits": 6,
+   "min": "0 m/s2",
+   "max": "3 m/s2",
+   "resolution": "0.05 m/s2",
+   "special": null
+  },
+  "A_NVP12": {
+   "name": "A_NVP12",
+   "length_bits": 6,
+   "min": "0 m/s2",
+   "max": "3.15 m/s2",
+   "resolution": "0.05 m/s2",
+   "special": null
+  },
+  "A_NVP23": {
+   "name": "A_NVP23",
+   "length_bits": 6,
+   "min": "0 m/s2",
+   "max": "3.15 m/s2",
+   "resolution": "0.05 m/s2",
+   "special": null
+  },
+  "D_ADHESION": {
+   "name": "D_ADHESION",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1 m or 10 m depending on Q_SCALE",
+   "special": null
+  },
+  "D_AXLELOAD": {
+   "name": "D_AXLELOAD",
+   "length_bits": 15,
+   "min": "0 m",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depending on Q_SCALE",
+   "special": null
+  },
+  "D_CURRENT": {
+   "name": "D_CURRENT",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1 m or 10 m depending on Q_SCALE",
+   "special": null
+  },
+  "D_CYCLOC": {
+   "name": "D_CYCLOC",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_DP": {
+   "name": "D_DP",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "D_EMERGENCYSTOP": {
+   "name": "D_EMERGENCYSTOP",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "D_ENDTIMERSTARTLOC": {
+   "name": "D_ENDTIMERSTARTLOC",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_GRADIENT": {
+   "name": "D_GRADIENT",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "D_INFILL": {
+   "name": "D_INFILL",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_LEVELTR": {
+   "name": "D_LEVELTR",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "D_LINK": {
+   "name": "D_LINK",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_LOC": {
+   "name": "D_LOC",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_LOOP": {
+   "name": "D_LOOP",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_LRBG": {
+   "name": "D_LRBG",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_LX": {
+   "name": "D_LX",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_MAMODE": {
+   "name": "D_MAMODE",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_NVOVTRP": {
+   "name": "D_NVOVTRP",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_NVPOTRP": {
+   "name": "D_NVPOTRP",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_NVROLL": {
+   "name": "D_NVROLL",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_NVSTFF": {
+   "name": "D_NVSTFF",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_OL": {
+   "name": "D_OL",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "D_PBD": {
+   "name": "D_PBD",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "D_PBDSR": {
+   "name": "D_PBDSR",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "D_POSOFF": {
+   "name": "D_POSOFF",
+   "length_bits": 15,
+   "min": "0 m",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "D_RBCTR": {
+   "name": "D_RBCTR",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "D_REF": {
+   "name": "D_REF",
+   "length_bits": 16,
+   "min": "-327.680 km",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "D_REVERSE": {
+   "name": "D_REVERSE",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_SECTIONTIMERSTOPLOC": {
+   "name": "D_SECTIONTIMERSTOPLOC",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_SR": {
+   "name": "D_SR",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_STARTOL": {
+   "name": "D_STARTOL",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_STARTREVERSE": {
+   "name": "D_STARTREVERSE",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_STATIC": {
+   "name": "D_STATIC",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_SUITABILITY": {
+   "name": "D_SUITABILITY",
+   "length_bits": 15,
+   "min": "0 m",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depending on Q_SCALE",
+   "special": null
+  },
+  "D_TAFDISPLAY": {
+   "name": "D_TAFDISPLAY",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_TEXTDISPLAY": {
+   "name": "D_TEXTDISPLAY",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_TRACKINIT": {
+   "name": "D_TRACKINIT",
+   "length_bits": 15,
+   "min": "0 m",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depending on Q_SCALE",
+   "special": null
+  },
+  "D_TRACKCOND": {
+   "name": "D_TRACKCOND",
+   "length_bits": 15,
+   "min": "0 m",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depending on Q_SCALE",
+   "special": null
+  },
+  "D_TRACTION": {
+   "name": "D_TRACTION",
+   "length_bits": 15,
+   "min": "0 m",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depending on Q_SCALE",
+   "special": null
+  },
+  "D_TSR": {
+   "name": "D_TSR",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "D_VALIDNV": {
+   "name": "D_VALIDNV",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "G_A": {
+   "name": "G_A",
+   "length_bits": 8,
+   "min": "0",
+   "max": "254‰",
+   "resolution": "1‰",
+   "special": null
+  },
+  "G_PBDSR": {
+   "name": "G_PBDSR",
+   "length_bits": 8,
+   "min": "0",
+   "max": "255‰",
+   "resolution": "1‰",
+   "special": null
+  },
+  "G_TSR": {
+   "name": "G_TSR",
+   "length_bits": 8,
+   "min": "0",
+   "max": "255‰",
+   "resolution": "1‰",
+   "special": null
+  },
+  "L_ACKLEVELTR": {
+   "name": "L_ACKLEVELTR",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "L_ACKMAMODE": {
+   "name": "L_ACKMAMODE",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "L_ADHESION": {
+   "name": "L_ADHESION",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1 m or 10 m depending on Q_SCALE",
+   "special": null
+  },
+  "L_AXLELOAD": {
+   "name": "L_AXLELOAD",
+   "length_bits": 15,
+   "min": "0 m",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depending on Q_SCALE",
+   "special": null
+  },
+  "L_CONSISTFRONTENGINEMAX": {
+   "name": "L_CONSISTFRONTENGINEMAX",
+   "length_bits": 12,
+   "min": "0 m",
+   "max": "4095 m",
+   "resolution": "1 m",
+   "special": null
+  },
+  "L_CONSISTFRONTENGINEMIN": {
+   "name": "L_CONSISTFRONTENGINEMIN",
+   "length_bits": 12,
+   "min": "0 m",
+   "max": "4095 m",
+   "resolution": "1 m",
+   "special": null
+  },
+  "L_CONSISTFRONTENGINENOM": {
+   "name": "L_CONSISTFRONTENGINENOM",
+   "length_bits": 12,
+   "min": "0 m",
+   "max": "4095 m",
+   "resolution": "1 m",
+   "special": null
+  },
+  "L_CONSISTREARENGINEMAX": {
+   "name": "L_CONSISTREARENGINEMAX",
+   "length_bits": 12,
+   "min": "0 m",
+   "max": "4095 m",
+   "resolution": "1 m",
+   "special": null
+  },
+  "L_CONSISTREARENGINEMIN": {
+   "name": "L_CONSISTREARENGINEMIN",
+   "length_bits": 12,
+   "min": "0 m",
+   "max": "4095 m",
+   "resolution": "1 m",
+   "special": null
+  },
+  "L_CONSISTREARENGINENOM": {
+   "name": "L_CONSISTREARENGINENOM",
+   "length_bits": 12,
+   "min": "0 m",
+   "max": "4095 m",
+   "resolution": "1 m",
+   "special": null
+  },
+  "L_DOUBTOVER": {
+   "name": "L_DOUBTOVER",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "L_DOUBTUNDER": {
+   "name": "L_DOUBTUNDER",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "L_ENDSECTION": {
+   "name": "L_ENDSECTION",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "L_LOOP": {
+   "name": "L_LOOP",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "L_LX": {
+   "name": "L_LX",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "L_MAMODE": {
+   "name": "L_MAMODE",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depending on Q_SCALE",
+   "special": null
+  },
+  "L_MESSAGE": {
+   "name": "L_MESSAGE",
+   "length_bits": 10,
+   "min": "0",
+   "max": "1023",
+   "resolution": "1 Byte",
+   "special": null
+  },
+  "L_NVKRINT": {
+   "name": "L_NVKRINT",
+   "length_bits": 5,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "0m",
+   "special": null
+  },
+  "L_PACKET": {
+   "name": "L_PACKET",
+   "length_bits": 13,
+   "min": "0",
+   "max": "8191",
+   "resolution": "1 bit",
+   "special": null
+  },
+  "L_PBDSR": {
+   "name": "L_PBDSR",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE.",
+   "special": null
+  },
+  "L_REVERSEAREA": {
+   "name": "L_REVERSEAREA",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "L_SECTION": {
+   "name": "L_SECTION",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "L_STOPLX": {
+   "name": "L_STOPLX",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "L_TAFDISPLAY": {
+   "name": "L_TAFDISPLAY",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "L_TEXT": {
+   "name": "L_TEXT",
+   "length_bits": 8,
+   "min": "0",
+   "max": "255",
+   "resolution": "1 Text String Element",
+   "special": null
+  },
+  "L_TEXTDISPLAY": {
+   "name": "L_TEXTDISPLAY",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.660 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "L_TRACKCOND": {
+   "name": "L_TRACKCOND",
+   "length_bits": 15,
+   "min": "0 m",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depending on Q_SCALE",
+   "special": null
+  },
+  "L_TRAIN": {
+   "name": "L_TRAIN",
+   "length_bits": 12,
+   "min": "0 m",
+   "max": "4095 m",
+   "resolution": "1 m",
+   "special": null
+  },
+  "L_TRAININT": {
+   "name": "L_TRAININT",
+   "length_bits": 15,
+   "min": "0 m",
+   "max": "32767 m",
+   "resolution": "1 m",
+   "special": null
+  },
+  "L_TSR": {
+   "name": "L_TSR",
+   "length_bits": 15,
+   "min": "0 cm",
+   "max": "327.670 km",
+   "resolution": "10 cm, 1m or 10 m depends on Q_SCALE",
+   "special": null
+  },
+  "M_ACK": {
+   "name": "M_ACK",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No acknowledgement required",
+   "special": null
+  },
+  "M_ADHESION": {
+   "name": "M_ADHESION",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Slippery rail",
+   "special": null
+  },
+  "M_AIRTIGHT": {
+   "name": "M_AIRTIGHT",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "Not fitted",
+   "special": null
+  },
+  "M_AXLELOADCAT": {
+   "name": "M_AXLELOADCAT",
+   "length_bits": 7,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "A",
+   "special": null
+  },
+  "M_CURRENT": {
+   "name": "M_CURRENT",
+   "length_bits": 10,
+   "min": "0 A",
+   "max": "10000 A",
+   "resolution": "10 A",
+   "special": null
+  },
+  "M_DUP": {
+   "name": "M_DUP",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "No duplicates",
+   "special": null
+  },
+  "M_ERROR": {
+   "name": "M_ERROR",
+   "length_bits": 8,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Balise group: linking consistency error (ref. 3.16.2.3)",
+   "special": null
+  },
+  "M_LEVEL": {
+   "name": "M_LEVEL",
+   "length_bits": 3,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Level 0",
+   "special": null
+  },
+  "M_LEVELTEXTDISPLAY": {
+   "name": "M_LEVELTEXTDISPLAY",
+   "length_bits": 3,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Level 0",
+   "special": null
+  },
+  "M_LEVELTR": {
+   "name": "M_LEVELTR",
+   "length_bits": 3,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Level 0",
+   "special": null
+  },
+  "M_LINEGAUGE": {
+   "name": "M_LINEGAUGE",
+   "length_bits": 8,
+   "min": "Bitset",
+   "max": "Special/Reserved Values",
+   "resolution": "xxxx xxx1",
+   "special": null
+  },
+  "M_LINEAXLELOADCAT": {
+   "name": "M_LINEAXLELOADCAT",
+   "length_bits": 16,
+   "min": "Bitset",
+   "max": "Special/Reserved Values",
+   "resolution": "xxxx xxxx xxxx xxx1",
+   "special": null
+  },
+  "M_LOADINGGAUGE": {
+   "name": "M_LOADINGGAUGE",
+   "length_bits": 8,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "The train does not fit to any of the interoperable loading gauge profiles",
+   "special": null
+  },
+  "M_LOC": {
+   "name": "M_LOC",
+   "length_bits": 3,
+   "min": "Special/Reserved Values",
+   "max": "000",
+   "resolution": "Now (The position report is sent upon receipt of the order)",
+   "special": null
+  },
+  "M_MAMODE": {
+   "name": "M_MAMODE",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "On Sight",
+   "special": null
+  },
+  "M_MCOUNT": {
+   "name": "M_MCOUNT",
+   "length_bits": 8,
+   "min": "0",
+   "max": "253",
+   "resolution": "Numbers",
+   "special": null
+  },
+  "M_MODE": {
+   "name": "M_MODE",
+   "length_bits": 5,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Full Supervision",
+   "special": null
+  },
+  "M_MODETEXTDISPLAY": {
+   "name": "M_MODETEXTDISPLAY",
+   "length_bits": 4,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Full Supervision",
+   "special": null
+  },
+  "M_NVAVADH": {
+   "name": "M_NVAVADH",
+   "length_bits": 5,
+   "min": "0",
+   "max": "1.00",
+   "resolution": "0.05",
+   "special": null
+  },
+  "M_NVCONTACT": {
+   "name": "M_NVCONTACT",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "Train trip",
+   "special": null
+  },
+  "M_NVDERUN": {
+   "name": "M_NVDERUN",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No",
+   "special": null
+  },
+  "M_NVEBCL": {
+   "name": "M_NVEBCL",
+   "length_bits": 4,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Confidence level = 50 %",
+   "special": null
+  },
+  "M_NVKRINT": {
+   "name": "M_NVKRINT",
+   "length_bits": 5,
+   "min": "0",
+   "max": "1.55",
+   "resolution": "0.05",
+   "special": null
+  },
+  "M_NVKTINT": {
+   "name": "M_NVKTINT",
+   "length_bits": 5,
+   "min": "0",
+   "max": "1.55",
+   "resolution": "0.05",
+   "special": null
+  },
+  "M_NVKVINT": {
+   "name": "M_NVKVINT",
+   "length_bits": 7,
+   "min": "0",
+   "max": "2.54",
+   "resolution": "0.02",
+   "special": null
+  },
+  "M_PLATFORM": {
+   "name": "M_PLATFORM",
+   "length_bits": 4,
+   "min": "Special/Reserved Values",
+   "max": "0000",
+   "resolution": "200 mm",
+   "special": null
+  },
+  "M_POSITION": {
+   "name": "M_POSITION",
+   "length_bits": 24,
+   "min": "0 m",
+   "max": "9’999’999  m",
+   "resolution": "1 m",
+   "special": null
+  },
+  "M_TRACKCOND": {
+   "name": "M_TRACKCOND",
+   "length_bits": 4,
+   "min": "Special/Reserved Values",
+   "max": "0000",
+   "resolution": "Non stopping area. Initial state: stopping permitted",
+   "special": null
+  },
+  "M_VOLTAGE": {
+   "name": "M_VOLTAGE",
+   "length_bits": 4,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Line not fitted with any traction system",
+   "special": null
+  },
+  "M_VERSION": {
+   "name": "M_VERSION",
+   "length_bits": 7,
+   "min": "Special/Reserved Values",
+   "max": "000 XXXX",
+   "resolution": "Previous versions according to e.g. EEIG SRS, UIC A200 SRS",
+   "special": null
+  },
+  "N_AXLE": {
+   "name": "N_AXLE",
+   "length_bits": 10,
+   "min": "0",
+   "max": "1022",
+   "resolution": "integers",
+   "special": null
+  },
+  "N_ITER": {
+   "name": "N_ITER",
+   "length_bits": 5,
+   "min": "0",
+   "max": "31",
+   "resolution": "integers",
+   "special": null
+  },
+  "N_PIG": {
+   "name": "N_PIG",
+   "length_bits": 3,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "I am the 1st",
+   "special": null
+  },
+  "N_TOTAL": {
+   "name": "N_TOTAL",
+   "length_bits": 3,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "1 balise in the group",
+   "special": null
+  },
+  "NC_CDDIFF": {
+   "name": "NC_CDDIFF",
+   "length_bits": 4,
+   "min": "0",
+   "max": "15",
+   "resolution": "Special/Reserved Values",
+   "special": null
+  },
+  "NC_CDTRAIN": {
+   "name": "NC_CDTRAIN",
+   "length_bits": 4,
+   "min": "0",
+   "max": "15",
+   "resolution": "Special/Reserved Values",
+   "special": null
+  },
+  "NC_DIFF": {
+   "name": "NC_DIFF",
+   "length_bits": 4,
+   "min": "0",
+   "max": "15",
+   "resolution": "Numbers",
+   "special": null
+  },
+  "NC_TRAIN": {
+   "name": "NC_TRAIN",
+   "length_bits": 15,
+   "min": "Bitset",
+   "max": "Special/Reserved Values",
+   "resolution": "000 0000 0000 0000",
+   "special": null
+  },
+  "NID_EM": {
+   "name": "NID_EM",
+   "length_bits": null,
+   "min": null,
+   "max": null,
+   "resolution": null,
+   "special": null
+  },
+  "NID_LRBG": {
+   "name": "NID_LRBG",
+   "length_bits": 14,
+   "min": "Special/Reserved Values",
+   "max": "16777215",
+   "resolution": "Unknown",
+   "special": null
+  },
+  "NID_LTRBG": {
+   "name": "NID_LTRBG",
+   "length_bits": null,
+   "min": null,
+   "max": null,
+   "resolution": null,
+   "special": null
+  },
+  "NID_LX": {
+   "name": "NID_LX",
+   "length_bits": 8,
+   "min": "0",
+   "max": "255",
+   "resolution": "Number",
+   "special": null
+  },
+  "NID_MESSAGE": {
+   "name": "NID_MESSAGE",
+   "length_bits": 8,
+   "min": "0",
+   "max": "255",
+   "resolution": "Numbers",
+   "special": null
+  },
+  "NID_OPERATIONAL": {
+   "name": "NID_OPERATIONAL",
+   "length_bits": 32,
+   "min": "0",
+   "max": "9999 9999",
+   "resolution": "Binary Coded Decimal",
+   "special": null
+  },
+  "NID_PACKET": {
+   "name": "NID_PACKET",
+   "length_bits": 8,
+   "min": "0",
+   "max": "255",
+   "resolution": "Numbers",
+   "special": null
+  },
+  "NID_PRVLRBG": {
+   "name": "NID_PRVLRBG",
+   "length_bits": 14,
+   "min": "Special/Reserved Values",
+   "max": "16777215",
+   "resolution": "unknown",
+   "special": null
+  },
+  "NID_TEXTMESSAGE": {
+   "name": "NID_TEXTMESSAGE",
+   "length_bits": 8,
+   "min": "0",
+   "max": "255",
+   "resolution": "Number",
+   "special": null
+  },
+  "NID_TSR": {
+   "name": "NID_TSR",
+   "length_bits": 8,
+   "min": "0",
+   "max": "255",
+   "resolution": "Number",
+   "special": null
+  },
+  "NID_VBCMK": {
+   "name": "NID_VBCMK",
+   "length_bits": 6,
+   "min": "0",
+   "max": "63",
+   "resolution": "Number",
+   "special": null
+  },
+  "Q_ASPECT": {
+   "name": "Q_ASPECT",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Stop if in SH mode",
+   "special": null
+  },
+  "Q_CONFTEXTDISPLAY": {
+   "name": "Q_CONFTEXTDISPLAY",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Driver acknowledgement always ends the text display, regardless of the end",
+   "special": null
+  },
+  "Q_DANGERPOINT": {
+   "name": "Q_DANGERPOINT",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No danger point information",
+   "special": null
+  },
+  "Q_DIFF": {
+   "name": "Q_DIFF",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Cant Deficiency specific category",
+   "special": null
+  },
+  "Q_DESK": {
+   "name": "Q_DESK",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Desks are closed",
+   "special": null
+  },
+  "Q_DIR": {
+   "name": "Q_DIR",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "Reverse",
+   "special": null
+  },
+  "Q_DIRLRBG": {
+   "name": "Q_DIRLRBG",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Reverse",
+   "special": null
+  },
+  "Q_DIRTRAIN": {
+   "name": "Q_DIRTRAIN",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Reverse",
+   "special": null
+  },
+  "Q_DLRBG": {
+   "name": "Q_DLRBG",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Reverse",
+   "special": null
+  },
+  "Q_EMERGENCYSTOP": {
+   "name": "Q_EMERGENCYSTOP",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Conditional Emergency Stop accepted, with update of current EOA/LOA (ref",
+   "special": null
+  },
+  "Q_ENDTIMER": {
+   "name": "Q_ENDTIMER",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No End section timer information",
+   "special": null
+  },
+  "Q_FRONT": {
+   "name": "Q_FRONT",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Train length delay on validity end point of profile element.",
+   "special": null
+  },
+  "Q_GDIR": {
+   "name": "Q_GDIR",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "downhill",
+   "special": null
+  },
+  "Q_INFILL": {
+   "name": "Q_INFILL",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Enter",
+   "special": null
+  },
+  "Q_INTEGRITY": {
+   "name": "Q_INTEGRITY",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No train integrity information",
+   "special": null
+  },
+  "Q_SAFECONSISTLENGTH": {
+   "name": "Q_SAFECONSISTLENGTH",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No safe consist length information available",
+   "special": null
+  },
+  "Q_LGTLOC": {
+   "name": "Q_LGTLOC",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Min safe rear end",
+   "special": null
+  },
+  "Q_LINK": {
+   "name": "Q_LINK",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Unlinked",
+   "special": null
+  },
+  "Q_LOCACC": {
+   "name": "Q_LOCACC",
+   "length_bits": 6,
+   "min": "0 m",
+   "max": "63 m",
+   "resolution": "1 m",
+   "special": null
+  },
+  "Q_LINKORIENTATION": {
+   "name": "Q_LINKORIENTATION",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "The balise group is seen by the train in reverse direction",
+   "special": null
+  },
+  "Q_LINKREACTION": {
+   "name": "Q_LINKREACTION",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "Train trip",
+   "special": null
+  },
+  "Q_LOOPDIR": {
+   "name": "Q_LOOPDIR",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Opposite",
+   "special": null
+  },
+  "Q_LSSMA": {
+   "name": "Q_LSSMA",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Toggle off",
+   "special": null
+  },
+  "Q_LXSTATUS": {
+   "name": "Q_LXSTATUS",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "LX is protected",
+   "special": null
+  },
+  "Q_MAMODE": {
+   "name": "Q_MAMODE",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No temporary SvL to be considered with respect to the mode profile",
+   "special": null
+  },
+  "Q_MARQSTREASON": {
+   "name": "Q_MARQSTREASON",
+   "length_bits": 5,
+   "min": "Bitset",
+   "max": "Special/Reserved Values",
+   "resolution": "xxxx1",
+   "special": null
+  },
+  "Q_MEDIA": {
+   "name": "Q_MEDIA",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Balise",
+   "special": null
+  },
+  "Q_MPOSITION": {
+   "name": "Q_MPOSITION",
+   "length_bits": 1,
+   "min": "0",
+   "max": "1",
+   "resolution": "Special/Reserved Values",
+   "special": null
+  },
+  "Q_NETWORKTYPE": {
+   "name": "Q_NETWORKTYPE",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "FRMCS",
+   "special": null
+  },
+  "Q_NEWCOUNTRY": {
+   "name": "Q_NEWCOUNTRY",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Same country / railway administration, no NID_C follows",
+   "special": null
+  },
+  "Q_NVDRIVER_ADHES": {
+   "name": "Q_NVDRIVER_ADHES",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Not allowed",
+   "special": null
+  },
+  "Q_NVEMRRLS": {
+   "name": "Q_NVEMRRLS",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Revoke emergency brake command at standstill",
+   "special": null
+  },
+  "Q_NVGUIPERM": {
+   "name": "Q_NVGUIPERM",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No",
+   "special": null
+  },
+  "Q_NVINHSMICPERM": {
+   "name": "Q_NVINHSMICPERM",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No",
+   "special": null
+  },
+  "Q_NVKINT": {
+   "name": "Q_NVKINT",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No integrated correction factors follow",
+   "special": null
+  },
+  "Q_NVKVINTSET": {
+   "name": "Q_NVKVINTSET",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "Freight trains",
+   "special": null
+  },
+  "Q_NVLOCACC": {
+   "name": "Q_NVLOCACC",
+   "length_bits": 6,
+   "min": "0 m",
+   "max": "63 m",
+   "resolution": "1 m",
+   "special": null
+  },
+  "Q_NVSBFBPERM": {
+   "name": "Q_NVSBFBPERM",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No",
+   "special": null
+  },
+  "Q_NVSBTSMPERM": {
+   "name": "Q_NVSBTSMPERM",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No",
+   "special": null
+  },
+  "Q_ORIENTATION": {
+   "name": "Q_ORIENTATION",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Reverse",
+   "special": null
+  },
+  "Q_OVERLAP": {
+   "name": "Q_OVERLAP",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No overlap information",
+   "special": null
+  },
+  "Q_PBDSR": {
+   "name": "Q_PBDSR",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "EB intervention requested",
+   "special": null
+  },
+  "Q_PLATFORM": {
+   "name": "Q_PLATFORM",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "Platform on left side",
+   "special": null
+  },
+  "Q_RBC": {
+   "name": "Q_RBC",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Terminate communication session",
+   "special": null
+  },
+  "Q_RIU": {
+   "name": "Q_RIU",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Terminate communication session",
+   "special": null
+  },
+  "Q_SCALE": {
+   "name": "Q_SCALE",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "10 cm scale",
+   "special": null
+  },
+  "Q_SECTIONTIMER": {
+   "name": "Q_SECTIONTIMER",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No Section Timer information",
+   "special": null
+  },
+  "Q_SLEEPSESSION": {
+   "name": "Q_SLEEPSESSION",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Ignore session establishment/termination order",
+   "special": null
+  },
+  "Q_SRSTOP": {
+   "name": "Q_SRSTOP",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Stop if in SR mode",
+   "special": null
+  },
+  "Q_SSCODE": {
+   "name": "Q_SSCODE",
+   "length_bits": 4,
+   "min": "0",
+   "max": "14",
+   "resolution": "Special/Reserved Values",
+   "special": null
+  },
+  "Q_STATUSLRBG": {
+   "name": "Q_STATUSLRBG",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "Invalid train position referred to an LRBG",
+   "special": null
+  },
+  "Q_STOPLX": {
+   "name": "Q_STOPLX",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No stop required",
+   "special": null
+  },
+  "Q_SUITABILITY": {
+   "name": "Q_SUITABILITY",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "Loading gauge",
+   "special": null
+  },
+  "Q_TEXT": {
+   "name": "Q_TEXT",
+   "length_bits": 8,
+   "min": "0",
+   "max": "255",
+   "resolution": "Special/Reserved Values",
+   "special": null
+  },
+  "Q_TEXTCLASS": {
+   "name": "Q_TEXTCLASS",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "Auxiliary Information",
+   "special": null
+  },
+  "Q_TEXTCONFIRM": {
+   "name": "Q_TEXTCONFIRM",
+   "length_bits": 2,
+   "min": "Special/Reserved Values",
+   "max": "00",
+   "resolution": "No confirmation required",
+   "special": null
+  },
+  "Q_TEXTDISPLAY": {
+   "name": "Q_TEXTDISPLAY",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No, display as soon as / until one of the sub-conditions is fulfilled",
+   "special": null
+  },
+  "Q_TEXTREPORT": {
+   "name": "Q_TEXTREPORT",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No driver acknowledgement report required",
+   "special": null
+  },
+  "Q_TRACKINIT": {
+   "name": "Q_TRACKINIT",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "No initial states to be resumed,  profile to follow",
+   "special": null
+  },
+  "Q_UPDOWN": {
+   "name": "Q_UPDOWN",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Down link telegram",
+   "special": null
+  },
+  "Q_VBCO": {
+   "name": "Q_VBCO",
+   "length_bits": 1,
+   "min": "Special/Reserved Values",
+   "max": "0",
+   "resolution": "Remove the Virtual Balise Cover",
+   "special": null
+  },
+  "T_CYCLOC": {
+   "name": "T_CYCLOC",
+   "length_bits": 8,
+   "min": "0 s",
+   "max": "254 s",
+   "resolution": "1s",
+   "special": null
+  },
+  "T_CYCRQST": {
+   "name": "T_CYCRQST",
+   "length_bits": 8,
+   "min": "0 s",
+   "max": "254 s",
+   "resolution": "1s",
+   "special": null
+  },
+  "T_LSSMA": {
+   "name": "T_LSSMA",
+   "length_bits": 8,
+   "min": "0 s",
+   "max": "255 s",
+   "resolution": "1 s",
+   "special": null
+  },
+  "T_ENDTIMER": {
+   "name": "T_ENDTIMER",
+   "length_bits": 10,
+   "min": "0 s",
+   "max": "1022 s",
+   "resolution": "1 s",
+   "special": null
+  },
+  "T_EMA": {
+   "name": "T_EMA",
+   "length_bits": 10,
+   "min": "0 s",
+   "max": "1022 s",
+   "resolution": "1 s",
+   "special": null
+  },
+  "T_MAR": {
+   "name": "T_MAR",
+   "length_bits": 8,
+   "min": "0 s",
+   "max": "254 s",
+   "resolution": "1 s",
+   "special": null
+  },
+  "T_NVCONTACT": {
+   "name": "T_NVCONTACT",
+   "length_bits": 8,
+   "min": "0 s",
+   "max": "254 s",
+   "resolution": "1s",
+   "special": null
+  },
+  "T_NVOVTRP": {
+   "name": "T_NVOVTRP",
+   "length_bits": 8,
+   "min": "0 s",
+   "max": "255 s",
+   "resolution": "1 s",
+   "special": null
+  },
+  "T_OL": {
+   "name": "T_OL",
+   "length_bits": 10,
+   "min": "0 s",
+   "max": "1022 s",
+   "resolution": "1 s",
+   "special": null
+  },
+  "T_SECTIONTIMER": {
+   "name": "T_SECTIONTIMER",
+   "length_bits": 10,
+   "min": "0 s",
+   "max": "1022 s",
+   "resolution": "1 s",
+   "special": null
+  },
+  "T_TEXTDISPLAY": {
+   "name": "T_TEXTDISPLAY",
+   "length_bits": 10,
+   "min": "0 s",
+   "max": "1022 s",
+   "resolution": "1 s",
+   "special": null
+  },
+  "T_TIMEOUTRQST": {
+   "name": "T_TIMEOUTRQST",
+   "length_bits": 10,
+   "min": "0 s",
+   "max": "1022 s",
+   "resolution": "1 s",
+   "special": null
+  },
+  "T_TRAIN": {
+   "name": "T_TRAIN",
+   "length_bits": 32,
+   "min": "0 s",
+   "max": "42949672.94 s",
+   "resolution": "10 ms",
+   "special": null
+  },
+  "T_VBC": {
+   "name": "T_VBC",
+   "length_bits": 8,
+   "min": "0 hours",
+   "max": "6120 hours (255 days)",
+   "resolution": "24 hours",
+   "special": null
+  },
+  "V_AXLELOAD": {
+   "name": "V_AXLELOAD",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_DIFF": {
+   "name": "V_DIFF",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_EMA": {
+   "name": "V_EMA",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_LX": {
+   "name": "V_LX",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_MAIN": {
+   "name": "V_MAIN",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_MAMODE": {
+   "name": "V_MAMODE",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_MAXTRAIN": {
+   "name": "V_MAXTRAIN",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_NVALLOWOVTRP": {
+   "name": "V_NVALLOWOVTRP",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_NVKVINT": {
+   "name": "V_NVKVINT",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_NVLIMSUPERV": {
+   "name": "V_NVLIMSUPERV",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_NVONSIGHT": {
+   "name": "V_NVONSIGHT",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_NVSUPOVTRP": {
+   "name": "V_NVSUPOVTRP",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_NVREL": {
+   "name": "V_NVREL",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_NVSHUNT": {
+   "name": "V_NVSHUNT",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_NVSTFF": {
+   "name": "V_NVSTFF",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_NVUNFIT": {
+   "name": "V_NVUNFIT",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_RELEASEDP": {
+   "name": "V_RELEASEDP",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_RELEASEOL": {
+   "name": "V_RELEASEOL",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_REVERSE": {
+   "name": "V_REVERSE",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_SM": {
+   "name": "V_SM",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_STATIC": {
+   "name": "V_STATIC",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_TRAIN": {
+   "name": "V_TRAIN",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "V_TSR": {
+   "name": "V_TSR",
+   "length_bits": 7,
+   "min": "0 km/h",
+   "max": "600 km/h",
+   "resolution": "5 km/h",
+   "special": null
+  },
+  "X_TEXT": {
+   "name": "X_TEXT",
+   "length_bits": null,
+   "min": null,
+   "max": null,
+   "resolution": null,
+   "special": null
+  }
+ },
+ "packets": {
+  "0": {
+   "number": 0,
+   "name": "Virtual Balise Cover marker"
+  },
+  "1": {
+   "number": 1,
+   "name": "Position Report based on two balise groups"
+  },
+  "2": {
+   "number": 2,
+   "name": "System Version order"
+  },
+  "3": {
+   "number": 3,
+   "name": "National Values"
+  },
+  "4": {
+   "number": 4,
+   "name": "Error reporting"
+  },
+  "5": {
+   "number": 5,
+   "name": "Linking"
+  },
+  "6": {
+   "number": 6,
+   "name": "Virtual Balise Cover order"
+  },
+  "9": {
+   "number": 9,
+   "name": "Level 2 transition information"
+  },
+  "10": {
+   "number": 10,
+   "name": "Safe consist length information for Supervised Manoeuvre"
+  },
+  "11": {
+   "number": 11,
+   "name": "Validated train data"
+  },
+  "12": {
+   "number": 12,
+   "name": "Level 1 Movement Authority"
+  },
+  "13": {
+   "number": 13,
+   "name": "Staff Responsible distance Information from loop"
+  },
+  "15": {
+   "number": 15,
+   "name": "Level 2 Movement Authority"
+  },
+  "16": {
+   "number": 16,
+   "name": "Repositioning Information"
+  },
+  "21": {
+   "number": 21,
+   "name": "Gradient Profile"
+  },
+  "27": {
+   "number": 27,
+   "name": "International Static Speed Profile"
+  },
+  "31": {
+   "number": 31,
+   "name": "RBC transition order for RBC interfaced to FRMCS only"
+  },
+  "32": {
+   "number": 32,
+   "name": "Session Management for RBC interfaced to FRMCS only"
+  },
+  "39": {
+   "number": 39,
+   "name": "Track Condition Change of traction system"
+  },
+  "40": {
+   "number": 40,
+   "name": "Track Condition Change of allowed current consumption"
+  },
+  "41": {
+   "number": 41,
+   "name": "Level Transition Order"
+  },
+  "42": {
+   "number": 42,
+   "name": "Session Management for RBC interfaced to GSM-R"
+  },
+  "44": {
+   "number": 44,
+   "name": "Data used by applications outside the ERTMS/ETCS system."
+  },
+  "45": {
+   "number": 45,
+   "name": "Radio Network transition order"
+  },
+  "46": {
+   "number": 46,
+   "name": "Conditional Level Transition Order"
+  },
+  "49": {
+   "number": 49,
+   "name": "List of Balise Groups for SH Area"
+  },
+  "51": {
+   "number": 51,
+   "name": "Axle Load Speed Profile"
+  },
+  "52": {
+   "number": 52,
+   "name": "Permitted Braking Distance Information"
+  },
+  "57": {
+   "number": 57,
+   "name": "Movement Authority Request Parameters"
+  },
+  "58": {
+   "number": 58,
+   "name": "Position Report Parameters"
+  },
+  "63": {
+   "number": 63,
+   "name": "List of Balise Groups in SR Authority"
+  },
+  "64": {
+   "number": 64,
+   "name": "Inhibition of revocable TSRs from balises in level 2"
+  },
+  "65": {
+   "number": 65,
+   "name": "Temporary Speed Restriction"
+  },
+  "66": {
+   "number": 66,
+   "name": "Temporary Speed Restriction Revocation"
+  },
+  "67": {
+   "number": 67,
+   "name": "Track Condition Big Metal Masses"
+  },
+  "68": {
+   "number": 68,
+   "name": "Track Condition"
+  },
+  "69": {
+   "number": 69,
+   "name": "Track Condition Station Platforms"
+  },
+  "70": {
+   "number": 70,
+   "name": "Route Suitability Data"
+  },
+  "73": {
+   "number": 73,
+   "name": "Packet for sending plain text messages"
+  },
+  "74": {
+   "number": 74,
+   "name": "Packet for sending fixed text messages"
+  },
+  "79": {
+   "number": 79,
+   "name": "Geographical Position Information"
+  },
+  "80": {
+   "number": 80,
+   "name": "Mode profile"
+  },
+  "88": {
+   "number": 88,
+   "name": "Level Crossing information"
+  },
+  "90": {
+   "number": 90,
+   "name": "Track Ahead Free up to level 2 transition location"
+  },
+  "131": {
+   "number": 131,
+   "name": "RBC transition order for RBC interfaced to GSM-R"
+  },
+  "132": {
+   "number": 132,
+   "name": "Danger for Shunting information"
+  },
+  "133": {
+   "number": 133,
+   "name": "Radio infill area information"
+  },
+  "134": {
+   "number": 134,
+   "name": "EOLM Packet"
+  },
+  "135": {
+   "number": 135,
+   "name": "Stop Shunting on desk opening"
+  },
+  "136": {
+   "number": 136,
+   "name": "Infill location reference"
+  },
+  "137": {
+   "number": 137,
+   "name": "Stop if in Staff Responsible"
+  },
+  "138": {
+   "number": 138,
+   "name": "Reversing area information"
+  },
+  "139": {
+   "number": 139,
+   "name": "Reversing supervision information"
+  },
+  "140": {
+   "number": 140,
+   "name": "Train running number from RBC"
+  },
+  "141": {
+   "number": 141,
+   "name": "Default Gradient for Temporary Speed Restriction"
+  },
+  "143": {
+   "number": 143,
+   "name": "Session Management with neighbouring Radio Infill Unit"
+  },
+  "145": {
+   "number": 145,
+   "name": "Inhibition of balise group message consistency reaction"
+  },
+  "180": {
+   "number": 180,
+   "name": "LSSMA display toggle order"
+  },
+  "181": {
+   "number": 181,
+   "name": "Generic LS function marker"
+  },
+  "254": {
+   "number": 254,
+   "name": "Default balise, loop or RIU information"
+  },
+  "255": {
+   "number": 255,
+   "name": "End of Information"
+  }
+ },
+ "messages": {
+  "2": {
+   "id": 2,
+   "title": "SR Authorisation ................................................................................... 27"
+  },
+  "3": {
+   "id": 3,
+   "title": "Movement Authority .............................................................................. 27"
+  },
+  "4": {
+   "id": 4,
+   "title": "SM Authorisation ............................................................................... 28"
+  },
+  "5": {
+   "id": 5,
+   "title": "SM Refused ...................................................................................... 28"
+  },
+  "6": {
+   "id": 6,
+   "title": "Recognition of exit from TRIP mode ..................................................... 29"
+  },
+  "7": {
+   "id": 7,
+   "title": "Acknowledgment of safe consist length info for SM ........................... 29"
+  },
+  "8": {
+   "id": 8,
+   "title": "Acknowledgement of Train Data ........................................................... 29"
+  },
+  "9": {
+   "id": 9,
+   "title": "Request to Shorten MA ......................................................................... 30"
+  },
+  "15": {
+   "id": 15,
+   "title": "Conditional Emergency Stop ............................................................... 30"
+  },
+  "16": {
+   "id": 16,
+   "title": "Unconditional Emergency Stop ........................................................... 31"
+  },
+  "18": {
+   "id": 18,
+   "title": "Revocation of Emergency Stop ........................................................... 31"
+  },
+  "24": {
+   "id": 24,
+   "title": "General message ............................................................................... 31"
+  },
+  "27": {
+   "id": 27,
+   "title": "SH Refused ........................................................................................ 32"
+  },
+  "28": {
+   "id": 28,
+   "title": "SH Authorised ..................................................................................... 32"
+  },
+  "32": {
+   "id": 32,
+   "title": "RBC/RIU System Version ................................................................... 32"
+  },
+  "33": {
+   "id": 33,
+   "title": "MA with Shifted Location Reference ................................................... 33"
+  },
+  "34": {
+   "id": 34,
+   "title": "Track Ahead Free Request ................................................................. 33"
+  },
+  "37": {
+   "id": 37,
+   "title": "Infill MA ............................................................................................... 34"
+  },
+  "38": {
+   "id": 38,
+   "title": "Acknowledgement of session establishment ....................................... 34"
+  },
+  "39": {
+   "id": 39,
+   "title": "Acknowledgement of termination of a communication session ............ 34"
+  },
+  "40": {
+   "id": 40,
+   "title": "Train Rejected .................................................................................... 35"
+  },
+  "41": {
+   "id": 41,
+   "title": "Train Accepted .................................................................................... 35"
+  },
+  "43": {
+   "id": 43,
+   "title": "SoM position report confirmed by RBC ............................................... 35"
+  },
+  "45": {
+   "id": 45,
+   "title": "Assignment of coordinate system ....................................................... 36"
+  },
+  "129": {
+   "id": 129,
+   "title": "Validated Train Data ......................................................................... 20"
+  },
+  "130": {
+   "id": 130,
+   "title": "Request for Shunting ........................................................................ 20"
+  },
+  "131": {
+   "id": 131,
+   "title": "Request for Supervised Manoeuvre .............................................. 20"
+  },
+  "132": {
+   "id": 132,
+   "title": "MA Request ...................................................................................... 21"
+  },
+  "133": {
+   "id": 133,
+   "title": "Safe consist length information for SM .......................................... 21"
+  },
+  "136": {
+   "id": 136,
+   "title": "Train Position Report ........................................................................ 21"
+  },
+  "137": {
+   "id": 137,
+   "title": "Request to Shorten MA is granted .................................................... 22"
+  },
+  "138": {
+   "id": 138,
+   "title": "Request to Shorten MA is rejected .................................................... 22"
+  },
+  "146": {
+   "id": 146,
+   "title": "Acknowledgement............................................................................. 22"
+  },
+  "147": {
+   "id": 147,
+   "title": "Acknowledgement of Emergency Stop .............................................. 23"
+  },
+  "149": {
+   "id": 149,
+   "title": "Track Ahead Free Granted ............................................................... 23"
+  },
+  "150": {
+   "id": 150,
+   "title": "End of Mission .................................................................................. 24"
+  },
+  "153": {
+   "id": 153,
+   "title": "Radio infill request ............................................................................ 24"
+  },
+  "154": {
+   "id": 154,
+   "title": "No compatible version supported ...................................................... 24"
+  },
+  "155": {
+   "id": 155,
+   "title": "Initiation of a communication session ................................................ 25"
+  },
+  "156": {
+   "id": 156,
+   "title": "Termination of a communication session .......................................... 25"
+  },
+  "157": {
+   "id": 157,
+   "title": "SoM Position Report ......................................................................... 25"
+  },
+  "158": {
+   "id": 158,
+   "title": "Text Message Acknowledged by Driver ............................................ 26"
+  },
+  "159": {
+   "id": 159,
+   "title": "Session established .......................................................................... 26"
+  }
+ }
+}
