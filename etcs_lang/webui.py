@@ -317,112 +317,136 @@ HTML = """<!DOCTYPE html>
 </div>
 
 <script>
-window.onerror=function(m,s,l){const e=document.getElementById('err');if(e)e.textContent='Erreur JS: '+m+' (ligne '+l+')';};
-function getApi(){return window.pywebview?window.pywebview.api:null;}
-function go(n){ ['step1','step2tg','step2radio','step3'].forEach(id=>document.getElementById(id).classList.add('hidden'));
-  document.getElementById('s1').classList.toggle('active',n===1);
-  document.getElementById('s2').classList.toggle('active',n===2);
-  document.getElementById('s3').classList.toggle('active',n===3); }
+window.onerror = function(m, s, l){ var e=document.getElementById('err'); if(e) e.textContent='Erreur JS: '+m+' (ligne '+l+')'; return false; };
+function getApi(){ return window.pywebview ? window.pywebview.api : null; }
+function g(id){ return document.getElementById(id).value; }
+function go(n){
+  var ids=['step1','step2tg','step2radio','step3'];
+  for(var i=0;i<ids.length;i++) document.getElementById(ids[i]).className='hidden';
+  document.getElementById('s1').className = n===1 ? 'step active' : 'step';
+  document.getElementById('s2').className = n===2 ? 'step active' : 'step';
+  document.getElementById('s3').className = n===3 ? 'step active' : 'step';
+}
 function back(){ go(1); document.getElementById('err').textContent=''; }
-async function chooseKind(kind){
+function chooseKind(kind){
   document.getElementById('err').textContent='';
-  if(kind==='telegram'){ go(2); document.getElementById('step2tg').classList.remove('hidden'); await loadBalisePackets(); }
-  else { go(2); document.getElementById('step2radio').classList.remove('hidden'); await loadMessages(); }
+  if(kind==='telegram'){ go(2); document.getElementById('step2tg').className=''; loadBalisePackets(); }
+  else { go(2); document.getElementById('step2radio').className=''; loadMessages(); }
 }
-async function loadBalisePackets(){
-  const api=getApi(); if(!api)return;
-  const list=await api.balise_packets();
-  const box=document.getElementById('tg_packets'); box.innerHTML='';
-  list.forEach(p=>{ const l=document.createElement('label'); l.className='pkt';
-    const c=document.createElement('input'); c.type='checkbox'; c.value=p.num;
-    l.append(c,' paquet '+p.num+' — '+p.name); box.append(l); });
+function loadBalisePackets(){
+  var api=getApi(); if(!api){ document.getElementById('err').textContent='pywebview pas pret'; return; }
+  api.balise_packets().then(function(list){
+    var box=document.getElementById('tg_packets'); box.innerHTML='';
+    for(var i=0;i<list.length;i++){
+      var p=list[i];
+      var l=document.createElement('label'); l.className='pkt';
+      var c=document.createElement('input'); c.type='checkbox'; c.value=p.num;
+      l.appendChild(c); l.appendChild(document.createTextNode(' paquet '+p.num+' - '+p.name));
+      box.appendChild(l);
+    }
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur paquets balise: '+e; });
 }
-async function loadMessages(){
-  const api=getApi(); if(!api)return;
-  const dir=document.getElementById('dir').value;
-  const list=await api.messages(dir);
-  const sel=document.getElementById('msg'); sel.innerHTML='';
-  list.forEach(m=>{const o=document.createElement('option');o.value=m.id;o.text=m.id+' - '+m.title;sel.add(o);});
-  loadPackets();
+function loadMessages(){
+  var api=getApi(); if(!api){ document.getElementById('err').textContent='pywebview pas pret'; return; }
+  var dir=document.getElementById('dir').value;
+  api.messages(dir).then(function(list){
+    var sel=document.getElementById('msg'); sel.innerHTML='';
+    for(var i=0;i<list.length;i++){
+      var o=document.createElement('option'); o.value=list[i].id; o.text=list[i].id+' - '+list[i].title; sel.add(o);
+    }
+    loadPackets();
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur messages: '+e; });
 }
-async function loadPackets(){
-  const api=getApi(); if(!api)return;
-  const nid=document.getElementById('msg').value;
-  const dir=document.getElementById('dir').value;
-  if(!nid)return;
-  let r;
-  try{ r=await api.packets(parseInt(nid),dir); }
-  catch(e){ document.getElementById('err').textContent='Erreur paquets: '+e; return; }
-  const mandNums=r.mandatory.map(p=>p.num);
-  document.getElementById('mandatory').innerHTML='<i>Obligatoires: '+(r.mandatory.map(p=>p.num+' '+p.name).join(', ')||'aucun')+'</i>';
-  const box=document.getElementById('packets'); box.innerHTML='';
-  if(!r.optional.length && !r.mandatory.length){ box.innerHTML='<i>Ce message ne contient aucun paquet (ch.8 §8.6/§8.7).</i>'; return; }
-  const seen=new Set();
-  [...r.mandatory,...r.optional].forEach(p=>{
-    if(seen.has(p.num))return; seen.add(p.num);
-    const l=document.createElement('label'); l.className='pkt';
-    const c=document.createElement('input'); c.type='checkbox'; c.value=p.num;
-    if(mandNums.includes(p.num)){c.checked=true;c.disabled=true;}
-    l.append(c,' paquet '+p.num+' — '+p.name); box.append(l);
-  });
+function loadPackets(){
+  var api=getApi(); if(!api) return;
+  var nid=document.getElementById('msg').value;
+  var dir=document.getElementById('dir').value;
+  if(!nid) return;
+  api.packets(parseInt(nid,10), dir).then(function(r){
+    var mandNums=[]; var i;
+    for(i=0;i<r.mandatory.length;i++) mandNums.push(r.mandatory[i].num);
+    var mtxt=[]; for(i=0;i<r.mandatory.length;i++) mtxt.push(r.mandatory[i].num+' '+r.mandatory[i].name);
+    document.getElementById('mandatory').innerHTML='<i>Obligatoires: '+(mtxt.join(', ')||'aucun')+'</i>';
+    var box=document.getElementById('packets'); box.innerHTML='';
+    if(!r.optional.length && !r.mandatory.length){ box.innerHTML='<i>Ce message ne contient aucun paquet (ch.8 8.6/8.7).</i>'; return; }
+    var seen={};
+    var all=r.mandatory.concat(r.optional);
+    for(i=0;i<all.length;i++){
+      var p=all[i];
+      if(seen[p.num]) continue; seen[p.num]=1;
+      var l=document.createElement('label'); l.className='pkt';
+      var c=document.createElement('input'); c.type='checkbox'; c.value=p.num;
+      if(mandNums.indexOf(p.num)>=0){ c.checked=true; c.disabled=true; }
+      l.appendChild(c); l.appendChild(document.createTextNode(' paquet '+p.num+' - '+p.name));
+      box.appendChild(l);
+    }
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur paquets: '+e; });
 }
-function g(id){return document.getElementById(id).value;}
 function tgPayload(){
-  const ps=[...document.querySelectorAll('#tg_packets input:checked')].map(c=>c.value);
+  var ps=[]; var els=document.querySelectorAll('#tg_packets input:checked');
+  for(var i=0;i<els.length;i++) ps.push(els[i].value);
   return {version:g('tg_version'),nid_c:g('tg_nid_c'),nid_bg:g('tg_nid_bg'),n_total:g('tg_n_total'),
     m_mcount:g('tg_m_mcount'),m_dup:g('tg_m_dup'),q_link:g('tg_q_link'),q_updown:g('tg_q_updown'),
     packets:ps,q_scale:g('q_scale'),v_ema:g('v_ema'),t_ema:g('t_ema'),l_endsection:g('l_endsection'),
     d_dp:g('d_dp'),v_releasedp:g('v_releasedp'),nid_vbcmk:g('nid_vbcmk'),nid_tsr:g('nid_tsr')};
 }
 function payload(){
-  const ps=[...document.querySelectorAll('#packets input:checked')].map(c=>c.value);
+  var ps=[]; var els=document.querySelectorAll('#packets input:checked');
+  for(var i=0;i<els.length;i++) ps.push(els[i].value);
   return {direction:g('dir'),nid:g('msg'),version:g('version'),nid_c:g('nid_c'),nid_bg:g('nid_bg'),
     t_train:g('t_train'),packets:ps,m_ack:g('m_ack'),v_ema:g('v_ema2'),t_ema:g('t_ema2'),
     l_endsection:g('l_endsection2'),d_dp:g('d_dp2'),v_releasedp:g('v_releasedp2'),d_sr:g('d_sr'),
     q_scale:g('q_scale2'),d_lrbg:g('d_lrbg'),v_train:g('v_train'),m_mode:g('m_mode'),
     m_level:g('m_level'),l_train:g('l_train'),v_maxtrain:g('v_maxtrain'),n_axle:g('n_axle')};
 }
-async function validate(){
-  const api=getApi(); if(!api)return;
-  const p=payload(); const errs=await api.validate(parseInt(p.nid),p.direction,p.packets);
-  document.getElementById('err').textContent=errs.length?('NON CONFORME: '+errs.join(' | ')):'Conforme ch.8 ✔';
+function validate(){
+  var api=getApi(); if(!api) return;
+  var p=payload();
+  api.validate(parseInt(p.nid,10), p.direction, p.packets).then(function(errs){
+    document.getElementById('err').textContent = errs.length ? ('NON CONFORME: '+errs.join(' | ')) : 'Conforme ch.8 OK';
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur validation: '+e; });
 }
-let last=null;
-async function genTelegram(){
-  const api=getApi(); if(!api)return;
+var last=null;
+function genTelegram(){
+  var api=getApi(); if(!api){ document.getElementById('err').textContent='pywebview pas pret'; return; }
   document.getElementById('err').textContent='';
-  try{
-    const r=await api.generate_telegram(JSON.stringify(tgPayload()));
+  api.generate_telegram(JSON.stringify(tgPayload())).then(function(r){
     last={kind:'telegram',items:r.telegrams};
-    document.getElementById('out').textContent=
-      'Groupe de '+r.n_total+' balise(s) — un télégramme par balise (N_PIG 0..'+(r.n_total-1)+') :\n\n'+
-      r.telegrams.map(t=>'--- Balise N_PIG='+t.n_pig+' ---\n'+t.text).join('\n\n');
-    go(3); document.getElementById('step3').classList.remove('hidden');
-  }catch(e){ document.getElementById('err').textContent='Erreur: '+e; }
+    var txt='Groupe de '+r.n_total+' balise(s) - un télégramme par balise (N_PIG 0..'+(r.n_total-1)+') :\n\n';
+    for(var i=0;i<r.telegrams.length;i++){
+      txt+='--- Balise N_PIG='+r.telegrams[i].n_pig+' ---\n'+r.telegrams[i].text+'\n\n';
+    }
+    document.getElementById('out').textContent=txt;
+    go(3); document.getElementById('step3').className='';
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur: '+e; });
 }
-async function generate(){
-  const api=getApi(); if(!api)return;
+function generate(){
+  var api=getApi(); if(!api){ document.getElementById('err').textContent='pywebview pas pret'; return; }
   document.getElementById('err').textContent='';
-  try{ last={kind:'message',items:[await api.generate(JSON.stringify(payload()))]};
-    document.getElementById('out').textContent=last.items[0].text;
-    go(3); document.getElementById('step3').classList.remove('hidden');
-  }catch(e){ document.getElementById('err').textContent='Erreur: '+e; }
+  api.generate(JSON.stringify(payload())).then(function(r){
+    last={kind:'message',items:[r]};
+    document.getElementById('out').textContent=r.text;
+    go(3); document.getElementById('step3').className='';
+  }).catch(function(e){ document.getElementById('err').textContent='Erreur: '+e; });
 }
 function save(fmt){
-  if(!last)return;
-  let content;
+  if(!last) return;
+  var content;
   if(last.kind==='telegram'){
-    content = fmt==='json' ? JSON.stringify({format:'Eurobalise group',telegrams:last.items.map(t=>JSON.parse(t.json))},null,2)
-                           : last.items.map(t=>t.text).join('\n\n');
+    if(fmt==='json'){
+      var arr=[]; for(var i=0;i<last.items.length;i++) arr.push(JSON.parse(last.items[i].json));
+      content=JSON.stringify({format:'Eurobalise group',telegrams:arr},null,2);
+    } else {
+      var t=''; for(var j=0;j<last.items.length;j++) t+=last.items[j].text+'\n\n';
+      content=t;
+    }
   } else {
     content = fmt==='json' ? last.items[0].json : last.items[0].text;
   }
-  const blob=new Blob([content],{type:'text/plain'});
-  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  var blob=new Blob([content],{type:'text/plain'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
   a.download='etcs_'+(last.kind==='telegram'?'telegrammes':'message')+'.'+fmt; a.click();
 }
-if(window.pywebview){ /* ready */ }
-else { window.addEventListener('pywebviewready', function(){}); }
 </script></body></html>"""
 
 
@@ -433,7 +457,12 @@ def main():
     webview.create_window(
         "ERTMS/ETCS B4R1 - Générateur de messages (étapes)",
         html=HTML, width=1250, height=800)
-    webview.start(debug=False)
+    # qt=True forces the Qt backend (Chromium) on Windows; without it pywebview
+    # may fall back to the legacy IE engine where modern JS silently fails.
+    try:
+        webview.start(debug=False, gui="qt")
+    except Exception:
+        webview.start(debug=False)
 
 
 if __name__ == "__main__":
