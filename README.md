@@ -74,6 +74,21 @@ python -m etcs_lang.cli decode <hex> --kind loop               # décoder un mes
 | `tools/extract_spec.py`, `tools/extract_packets.py` | extracteurs des spécifications |
 | `tests/test_etcs_lang.py` | tests unitaires (round-trip encode/décode) |
 
+## Interface graphique
+
+```bash
+pip install pywebview        # dépendance GUI uniquement
+python -m etcs_lang.webui    # ouvre une fenêtre navigateur
+```
+
+L'interface permet de :
+- choisir la **direction** (sol → bord ou bord → sol), la **version système** (ch.6), NID_C/NID_BG, T_TRAIN ;
+- sélectionner un **message** dans la liste ch.8 (§8.5.2/§8.5.3) ;
+- cocher uniquement les **paquets autorisés** pour ce message (obligatoires pré-cochés, ch.8 §8.4.4.4) ;
+- **valider la conformité** (bouton « Valider conformité ch.8 » : paquet obligatoire manquant, paquet non autorisé, doublon interdit §8.4.1) ;
+- **générer** le message binaire (hex) et l'afficher décodé ;
+- **enregistrer dans un format relisible** : JSON (structure complète décodée + hex) ou TXT (rendu lisible ligne par ligne).
+
 ## Tests
 
 ```bash

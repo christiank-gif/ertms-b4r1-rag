@@ -223,3 +223,54 @@ class TestGenerator(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestRules(unittest.TestCase):
+    def test_allowed_packets(self):
+        from etcs_lang.rules import allowed_packets
+        mand, opt = allowed_packets(3, "track_to_train")
+        self.assertIn(15, mand)
+        self.assertIn(21, opt)
+        mand, opt = allowed_packets(136, "train_to_track")
+        self.assertIn(0, mand)
+        self.assertIn(44, opt)
+        mand, opt = allowed_packets(155, "train_to_track")
+        self.assertEqual(mand, [])
+
+    def test_validate(self):
+        from etcs_lang.rules import validate_message
+        self.assertEqual(validate_message(3, "track_to_train", [15, 21]), [])
+        self.assertTrue(validate_message(3, "track_to_train", [21]))          # missing 15
+        self.assertTrue(validate_message(136, "train_to_track", [0, 9]))      # 9 not allowed
+        self.assertTrue(validate_message(3, "track_to_train", [15, 15]))      # duplicate
+        self.assertEqual(validate_message(155, "train_to_track", []), [])
+
+
+class TestExporter(unittest.TestCase):
+    def test_export_roundtrip(self):
+        import json as _json
+        from etcs_lang.exporter import export_json, export_text
+        from etcs_lang.messages import msg_3_movement_authority
+        ma = {"q_scale": 1, "v_ema_kmh": 120, "t_ema_s": 0, "l_endsection_m": 10000,
+              "sections_m": [], "q_dangerpoint": 0, "d_dp_m": 0,
+              "v_releasedp_kmh": 0, "q_overlap": 0}
+        data = msg_3_movement_authority(42, 1, (1 << 14) | 100, ma)
+        obj = _json.loads(export_json(data, "message"))
+        self.assertEqual(obj["NID_MESSAGE"], 3)
+        self.assertEqual(obj["packets"][0]["NID_PACKET"], 15)
+        self.assertIn("hex", obj)
+        txt = export_text(data, "message")
+        self.assertIn("Movement Authority", txt)
+        self.assertIn("Packet 15", txt)
+
+    def test_webui_api(self):
+        import json as _json
+        from etcs_lang.webui import Api
+        api = Api()
+        self.assertEqual(len(api.messages("sol")), 24)
+        r = api.generate(_json.dumps({"direction": "sol", "nid": 3, "version": "3.0",
+                                      "nid_c": 1, "nid_bg": 100, "packets": [15],
+                                      "m_ack": 1, "v_ema": 100, "l_endsection": 8000,
+                                      "d_dp": 100, "q_scale": 1}))
+        self.assertTrue(r["hex"].startswith("03"))
+        self.assertEqual(api.validate(3, "sol", [15]), [])
