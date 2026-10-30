@@ -87,3 +87,44 @@ python -m unittest discover -s tests -v
 - Les paquets dans un télégramme/message sont concaténés au bit près (ch.8 §8.4.2.2 : un paquet ne peut pas être scindé entre deux balises).
 - `M_VERSION` (7 bits) : 3 MSB = X (version incompatible), 4 LSB = Y (compatible) — ch.7 §7.5.1.79 et ch.6 §6.4.
 - Le paquet 255 (fin d'information) est un `NID_PACKET` = 255 sur 8 bits.
+
+## ERA Braking Curves tool (SUBSET-026 ch. 3.13)
+
+Le paquet `era_bct/` est une réécriture Python autonome de l'outil **ERA Braking
+Curves Tool v5.1** (Excel/VBA) : calcul des courbes de freinage EBD/SBD/GUI et
+des limites de supervision EBI/SBI/W/P/I conformes au SUBSET-026 v4.0.0
+(chapitre 3.13 + Annexe A) et au SUBSET-041. Chaque formule porte en commentaire
+la clause SRS implémentée ; les résultats peuvent être comparés cellule par
+cellule au classeur (`--compare`).
+
+```bash
+python -m era_bct                          # interface graphique (Tkinter)
+python -m era_bct scenario.json            # CLI : points caractéristiques
+python -m era_bct classeur.xlsm --compare --tol 1e-9   # validation vs VBA
+python -m era_bct scenario.json --csv out.csv --plot out.png
+```
+
+```python
+from era_bct import Scenario, run
+res = run(Scenario.default())      # résume EBI/SBI/W/P/I au point perturbation
+print(res.summary)
+```
+
+| Fichier | Rôle |
+|---|---|
+| `era_bct/vba.py` | sémantique Excel/VBA (Grid, VLookup, CLng, Max/Min) |
+| `era_bct/model.py` | modèle de données d'entrée (feuilles du classeur) + JSON |
+| `era_bct/lambda_model.py` | frein λ : conversion UIC, temps de montée (Annexe A §A.3.7–A.3.9) |
+| `era_bct/tables.py` | tables de décélération au pas 0,1 km/h + pivots |
+| `era_bct/geometry.py` | V_ura (SUBSET-041), marges de plafond, position |
+| `era_bct/accel.py` | A_safe/A_expected/A_normal_service + grille CR1344 |
+| `era_bct/track.py` | profil de gradient, compensation, zones |
+| `era_bct/curves.py` | EBD/SBD/GUI, limites EBI/SBI/W/P/I, release speed |
+| `era_bct/engine.py` | orchestration `run()` + `Result` (CSV/plot) |
+| `era_bct/workbook.py` | lecture des entrées d'un `.xlsm` |
+| `era_bct/compare.py` | comparaison cellule par cellule avec le classeur |
+| `era_bct/cli.py`, `era_bct/gui.py` | CLI et interface Tkinter |
+
+Dépendances optionnelles : `openpyxl` (import .xlsm / --compare), `matplotlib`
+(graphique), `pandas` (export DataFrame). Le calcul lui-même n'utilise que la
+bibliothèque standard.
