@@ -265,7 +265,10 @@ class TestExporter(unittest.TestCase):
 
     def test_webui_api(self):
         import json as _json
-        from etcs_lang.webui import Api
+        try:
+            from etcs_lang.webui import Api
+        except SystemExit:
+            self.skipTest("pywebview not installed")
         api = Api()
         self.assertEqual(len(api.messages("sol")), 24)
         r = api.generate(_json.dumps({"direction": "sol", "nid": 3, "version": "3.0",

@@ -18,8 +18,8 @@ from .exporter import export_json, export_text
 
 try:
     import webview
-except ImportError as exc:  # pragma: no cover
-    raise SystemExit("pip install pywebview is required for the GUI") from exc
+except ImportError:  # pragma: no cover - GUI optional dependency
+    webview = None
 
 
 class Api:
@@ -231,6 +231,8 @@ loadMessages();
 
 
 def main():
+    if webview is None:
+        raise SystemExit("pip install pywebview is required for the GUI (pip install pywebview)")
     api = Api()
     webview.create_window(
         "ERTMS/ETCS B4R1 - Générateur de messages bord/sol",
