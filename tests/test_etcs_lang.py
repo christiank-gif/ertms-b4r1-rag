@@ -271,6 +271,9 @@ class TestExporter(unittest.TestCase):
             self.skipTest("pywebview not installed")
         api = Api()
         self.assertEqual(len(api.messages("sol")), 24)
+        pk = api.packets(3, "sol")
+        self.assertEqual(pk["mandatory"][0]["num"], 15)
+        self.assertTrue(any(p["num"] == 21 for p in pk["optional"]))
         r = api.generate(_json.dumps({"direction": "sol", "nid": 3, "version": "3.0",
                                       "nid_c": 1, "nid_bg": 100, "packets": [15],
                                       "m_ack": 1, "v_ema": 100, "l_endsection": 8000,

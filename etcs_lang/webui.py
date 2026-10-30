@@ -30,9 +30,13 @@ class Api:
         return [{"id": nid, "title": t} for nid, t in sorted(table.items())]
 
     def packets(self, nid, direction):
+        from .packets import packet_name
         d = "track_to_train" if direction == "sol" else "train_to_track"
         mandatory, optional = allowed_packets(nid, d)
-        return {"mandatory": mandatory, "optional": optional}
+        def label(p):
+            return {"num": p, "name": packet_name(p, d)}
+        return {"mandatory": [label(p) for p in mandatory],
+                "optional": [label(p) for p in optional]}
 
     def validate(self, nid, direction, packets):
         d = "track_to_train" if direction == "sol" else "train_to_track"
@@ -180,8 +184,10 @@ HTML = """<!DOCTYPE html>
  </div>
 </div>
 <script>
-const api = window.pywebview.api;
+window.onerror=function(m,s,l){const e=document.getElementById('err');if(e)e.textContent='Erreur JS: '+m+' (ligne '+l+')';};
+function getApi(){return window.pywebview?window.pywebview.api:null;}
 async function loadMessages(){
+  const api=getApi(); if(!api){document.getElementById('err').textContent='pywebview pas pret, reessayez';return;}
   const dir=document.getElementById('dir').value;
   const list=await api.messages(dir);
   const sel=document.getElementById('msg'); sel.innerHTML='';
@@ -189,16 +195,24 @@ async function loadMessages(){
   loadPackets();
 }
 async function loadPackets(){
+  const api=getApi(); if(!api)return;
   const nid=document.getElementById('msg').value;
   const dir=document.getElementById('dir').value;
-  const r=await api.packets(parseInt(nid),dir);
-  document.getElementById('mandatory').innerHTML='<i>Obligatoires: '+r.mandatory.join(', ')+'</i>';
+  if(!nid)return;
+  let r;
+  try{ r=await api.packets(parseInt(nid),dir); }
+  catch(e){ document.getElementById('err').textContent='Erreur paquets: '+e; return; }
+  const mandNums=r.mandatory.map(p=>p.num);
+  document.getElementById('mandatory').innerHTML='<i>Obligatoires: '+(r.mandatory.map(p=>p.num+' '+p.name).join(', ')||'aucun')+'</i>';
   const box=document.getElementById('packets'); box.innerHTML='';
-  [...new Set([...r.mandatory,...r.optional])].forEach(p=>{
-    const l=document.createElement('label'); l.className='pkt';
-    const c=document.createElement('input'); c.type='checkbox'; c.value=p;
-    if(r.mandatory.includes(p)){c.checked=true;c.disabled=true;}
-    l.append(c,' paquet '+p); box.append(l);
+  if(!r.optional.length && !r.mandatory.length){ box.innerHTML='<i>Ce message ne contient aucun paquet (ch.8 §8.6/§8.7).</i>'; return; }
+  const seen=new Set();
+  [...r.mandatory,...r.optional].forEach(p=>{
+    if(seen.has(p.num))return; seen.add(p.num);
+    const l=document.createElement('label'); l.className='pkt'; l.style.display='block';
+    const c=document.createElement('input'); c.type='checkbox'; c.value=p.num;
+    if(mandNums.includes(p.num)){c.checked=true;c.disabled=true;}
+    l.append(c,' paquet '+p.num+' — '+p.name); box.append(l);
   });
 }
 function payload(){
@@ -211,11 +225,13 @@ function payload(){
     m_level:g('m_level'),l_train:g('l_train'),v_maxtrain:g('v_maxtrain'),n_axle:g('n_axle')};
 }
 async function validate(){
+  const api=getApi(); if(!api)return;
   const p=payload(); const errs=await api.validate(parseInt(p.nid),p.direction,p.packets);
   document.getElementById('err').textContent=errs.length?('NON CONFORME: '+errs.join(' | ')):'Conforme ch.8 ✔';
 }
 let last=null;
 async function generate(){
+  const api=getApi(); if(!api)return;
   document.getElementById('err').textContent='';
   try{ last=await api.generate(JSON.stringify(payload())); document.getElementById('out').textContent=last.text; }
   catch(e){ document.getElementById('err').textContent='Erreur: '+e; }
@@ -226,7 +242,8 @@ function save(fmt){
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
   a.download='etcs_message.'+fmt; a.click();
 }
-loadMessages();
+if(window.pywebview){ loadMessages(); }
+else { window.addEventListener('pywebviewready', loadMessages); }
 </script></body></html>"""
 
 
